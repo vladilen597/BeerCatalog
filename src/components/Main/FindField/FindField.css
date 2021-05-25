@@ -1,0 +1,20 @@
+.find-beers-input {
+  padding: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 24px;
+  width: 95%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid #000;
+}
+
+.find-beers-container {
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.find-beers-button {
+  width: 5%;
+}
