@@ -23,9 +23,10 @@ class Pagination extends Component {
   };
 
   render() {
+    console.log(this.props);
     let paginationArray = [];
 
-    for (let i = 1; i <= 19; i++) {
+    for (let i = 2; i <= 19; i++) {
       paginationArray.push(i);
     }
 
@@ -36,24 +37,44 @@ class Pagination extends Component {
             {"<"}
           </button>
         </li>
+        <li className="pagination-list-item">
+          <button
+            onClick={() => {
+              this.saveCurrentPage(1);
+              this.props.fetchBeers(1);
+            }}
+            style={
+              this.state.currentPage == 1
+                ? { backgroundColor: "blue", color: "#fff" }
+                : { backgroundColor: "#fff" }
+            }
+          >
+            1
+          </button>
+        </li>
         {paginationArray.map((pageNumber) => {
-          return (
-            <li key={pageNumber} className="pagination-list-item">
-              <button
-                onClick={() => {
-                  this.saveCurrentPage(pageNumber);
-                  this.props.fetchBeers(pageNumber);
-                }}
-                style={
-                  this.state.currentPage == pageNumber
-                    ? { backgroundColor: "blue", color: "#fff" }
-                    : { backgroundColor: "#fff" }
-                }
-              >
-                {pageNumber}
-              </button>
-            </li>
-          );
+          if (
+            pageNumber > this.state.currentPage - 2 &&
+            pageNumber < this.state.currentPage + 3
+          ) {
+            return (
+              <li key={pageNumber} className="pagination-list-item">
+                <button
+                  onClick={() => {
+                    this.saveCurrentPage(pageNumber);
+                    this.props.fetchBeers(pageNumber);
+                  }}
+                  style={
+                    this.state.currentPage == pageNumber
+                      ? { backgroundColor: "blue", color: "#fff" }
+                      : { backgroundColor: "#fff" }
+                  }
+                >
+                  {pageNumber}
+                </button>
+              </li>
+            );
+          }
         })}
 
         <li className="pagination-list-item">

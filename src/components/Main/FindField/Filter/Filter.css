@@ -1,0 +1,30 @@
+label {
+  display: block;
+}
+
+.filter-block {
+  display: block;
+}
+
+.filter-block-item {
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-block-item h3 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.filter-block-input {
+  display: flex;
+  align-items: center;
+}
+
+.filter-block-input input[type="range"] {
+  margin-left: 10px;
+  width: 250px;
+}

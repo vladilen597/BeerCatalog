@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Pagination from "../components/Main/Pagination/Pagination.jsx";
-import fetchBeers from "../store/actions/fetchBeersAction.jsx";
+import { fetchBeers } from "../store/actions/fetchBeersAction.jsx";
 
 const mapStateToProps = (state) => {
   return {

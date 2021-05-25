@@ -2,6 +2,7 @@ const initialState = {
   loading: false,
   beers: [],
   error: "",
+  isSearched: false,
 };
 
 const beersReducer = (state = initialState, action) => {
@@ -16,23 +17,19 @@ const beersReducer = (state = initialState, action) => {
         loading: false,
         beers: action.payload,
         error: "",
+        isSearched: false,
       };
     case "FETCH_BEERS_ERROR":
       return {
         loading: false,
         beers: [],
         error: action.payload,
+        isSearched: false,
       };
     case "FIND_BEER":
-      if (action.payload == "") {
-        console.log(state);
-        return state;
-      }
       return {
         ...state,
-        beers: state.beers.filter((item) =>
-          item.name.toLowerCase().includes(action.payload.toLowerCase())
-        ),
+        isSearched: true,
       };
     default:
       return state;

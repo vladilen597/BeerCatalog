@@ -2,6 +2,7 @@ const FETCH_BEERS = {
   REQUEST: "FETCH_BEERS_REQUEST",
   SUCCESS: "FETCH_BEERS_SUCCESS",
   FAILURE: "FETCH_BEERS_FAILURE",
+  FIND_BEER: "FIND_BEER",
 };
 
 const fetchBeersRequest = () => {
@@ -24,6 +25,12 @@ const fetchBeersFailure = (error) => {
   };
 };
 
+const findBeer = () => {
+  return {
+    type: FETCH_BEERS.FIND_BEER,
+  };
+};
+
 const fetchBeers = (page = 1) => {
   return (dispatch) => {
     dispatch(fetchBeersRequest);
@@ -34,4 +41,17 @@ const fetchBeers = (page = 1) => {
   };
 };
 
-export default fetchBeers;
+const findBeerFetch = (name) => {
+  return (dispatch) => {
+    dispatch(fetchBeersRequest);
+    fetch(`https://api.punkapi.com/v2/beers?beer_name=${name}`)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(fetchBeersSuccess(data));
+        dispatch(findBeer());
+      })
+      .catch((error) => dispatch(fetchBeersFailure(error)));
+  };
+};
+
+export { fetchBeers, findBeerFetch };
