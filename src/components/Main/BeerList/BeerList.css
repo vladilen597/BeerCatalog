@@ -9,6 +9,7 @@
 .beer-list-item {
   margin-top: 50px;
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
   width: 30%;
@@ -23,7 +24,7 @@
   margin-top: 10px;
   padding-top: 10px;
   width: 80%;
-  height: 100px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;

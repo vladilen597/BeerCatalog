@@ -9,7 +9,7 @@ class BeerList extends Component {
   render() {
     const { beers, error } = this.props.state;
     return this.props.state.loading ? (
-      <h1>{error}</h1>
+      <h1>LOADING...</h1>
     ) : (
       <ul className="beer-list">
         {beers.map((item) => {

@@ -24,10 +24,10 @@ const fetchBeersFailure = (error) => {
   };
 };
 
-const fetchBeers = () => {
+const fetchBeers = (page = 1) => {
   return (dispatch) => {
     dispatch(fetchBeersRequest);
-    fetch("https://api.punkapi.com/v2/beers")
+    fetch(`https://api.punkapi.com/v2/beers?page=${page}&per_page=18`)
       .then((res) => res.json())
       .then((data) => dispatch(fetchBeersSuccess(data)))
       .catch((error) => dispatch(fetchBeersFailure(error)));
