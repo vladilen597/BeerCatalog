@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./BeerList.css";
 
 class BeerList extends Component {
@@ -20,7 +21,11 @@ class BeerList extends Component {
                 {item.name}
                 <p>{item.tagline}</p>
                 <div className="beer-list-item-buttons">
-                  <button>OPEN</button>
+                  <button onClick={() => this.props.getId(item.id)}>
+                    <Link className="beer-link" to={"/" + item.id}>
+                      OPEN
+                    </Link>
+                  </button>
                   <button>FAVOURITE</button>
                 </div>
               </div>

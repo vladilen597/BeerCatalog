@@ -44,3 +44,8 @@
 .beer-list-item-buttons button:first-child {
   margin-right: 10px;
 }
+
+.beer-link {
+  color: #fff;
+  text-decoration: none;
+}

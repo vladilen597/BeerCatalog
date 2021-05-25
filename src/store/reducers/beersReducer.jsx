@@ -3,6 +3,11 @@ const initialState = {
   beers: [],
   error: "",
   isSearched: false,
+  filter: {
+    alcohol: 0,
+    unit: 0,
+    color: 0,
+  },
 };
 
 const beersReducer = (state = initialState, action) => {

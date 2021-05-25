@@ -3,6 +3,7 @@ const FETCH_BEERS = {
   SUCCESS: "FETCH_BEERS_SUCCESS",
   FAILURE: "FETCH_BEERS_FAILURE",
   FIND_BEER: "FIND_BEER",
+  FILTER: "FILTER",
 };
 
 const fetchBeersRequest = () => {
@@ -54,4 +55,19 @@ const findBeerFetch = (name) => {
   };
 };
 
-export { fetchBeers, findBeerFetch };
+const filterBeers = (alcohol, unit, color) => {
+  return (dispatch) => {
+    dispatch(fetchBeersRequest);
+    fetch(
+      `https://api.punkapi.com/v2/beers?abv_lt=${alcohol}&ibu_lt=${unit}&ebc_lt=${color}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(fetchBeersSuccess(data));
+        dispatch(findBeer());
+      })
+      .catch((error) => dispatch(fetchBeersFailure(error)));
+  };
+};
+
+export { fetchBeers, findBeerFetch, filterBeers };

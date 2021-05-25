@@ -6,14 +6,29 @@ class Filter extends Component {
 
   handleAlcoholChange = (event) => {
     this.setState({ alcohol: event.target.value });
+    this.props.filterBeers(
+      this.state.alcohol,
+      this.state.IBUnits,
+      this.state.color
+    );
   };
 
   handleUnitChange = (event) => {
     this.setState({ IBUnits: event.target.value });
+    this.props.filterBeers(
+      this.state.alcohol,
+      this.state.IBUnits,
+      this.state.color
+    );
   };
 
   handleColorChange = (event) => {
     this.setState({ color: event.target.value });
+    this.props.filterBeers(
+      this.state.alcohol,
+      this.state.IBUnits,
+      this.state.color
+    );
   };
 
   render() {

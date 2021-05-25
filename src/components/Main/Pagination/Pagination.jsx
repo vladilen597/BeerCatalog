@@ -23,7 +23,6 @@ class Pagination extends Component {
   };
 
   render() {
-    console.log(this.props);
     let paginationArray = [];
 
     for (let i = 2; i <= 19; i++) {
