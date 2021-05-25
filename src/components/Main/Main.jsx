@@ -1,12 +1,13 @@
 import React from "react";
-import BeerList from "./BeerList/BeerList.jsx";
+import BeerListConnected from "../../containers/BeerListContainer.jsx";
+import FindFieldConnected from "../../containers/FindFieldContainer.jsx";
 import FindField from "./FindField/FindField.jsx";
 
 const Main = () => {
   return (
     <main>
-      <FindField />
-      <BeerList />
+      <FindFieldConnected />
+      <BeerListConnected />
     </main>
   );
 };

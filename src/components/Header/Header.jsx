@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import navIcon from "../../constants/resourses/pictures/picturesImport.jsx";
+import { navIcon } from "../../constants/resourses/pictures/picturesImport.jsx";
 
 const Header = () => {
   return (

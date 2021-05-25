@@ -1,10 +1,13 @@
 .beer-list {
+  font-size: 16px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .beer-list-item {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,4 +17,29 @@
 
 .beer-list-item img {
   height: 200px;
+}
+
+.beer-list-item-decription {
+  margin-top: 10px;
+  padding-top: 10px;
+  width: 80%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: grey;
+  color: #fff;
+}
+
+.beer-list-item-buttons button {
+  font-size: 14px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.beer-list-item-buttons button:first-child {
+  margin-right: 10px;
 }

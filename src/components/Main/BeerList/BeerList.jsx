@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 import "./BeerList.css";
 
-export class BeerList extends Component {
-  state = {
-    beers: [],
-  };
-
-  componentWillMount() {
-    fetch("https://api.punkapi.com/v2/beers")
-      .then((res) => res.json())
-      .then((data) => this.setState({ beers: data }));
+class BeerList extends Component {
+  componentDidMount() {
+    this.props.fetchBeers();
   }
 
   render() {
-    console.log(this.state.beers);
-    return (
+    const { beers, error } = this.props.state;
+    return this.props.state.loading ? (
+      <h1>{error}</h1>
+    ) : (
       <ul className="beer-list">
-        {this.state.beers.map((beer) => {
+        {beers.map((item) => {
           return (
-            <li key={beer.id} className="beer-list-item">
-              <img src={beer.image_url} />
-              {beer.name}
-              {beer.tagline}
+            <li key={item.id} className="beer-list-item">
+              <img src={item.image_url} />
+              <div className="beer-list-item-decription">
+                {item.name}
+                <p>{item.tagline}</p>
+                <div className="beer-list-item-buttons">
+                  <button>OPEN</button>
+                  <button>FAVOURITE</button>
+                </div>
+              </div>
             </li>
           );
         })}

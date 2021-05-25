@@ -16,5 +16,13 @@
 }
 
 .find-beers-button {
-  width: 5%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 40px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+.find-beers-icon {
+  width: 20px;
 }

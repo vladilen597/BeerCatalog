@@ -1,3 +1,4 @@
 import navIcon from "../../../resourses/navicon.png";
+import searchIcon from "../../../resourses/searchicon.png";
 
-export default navIcon;
+export { navIcon, searchIcon };
