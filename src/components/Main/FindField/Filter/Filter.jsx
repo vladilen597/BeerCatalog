@@ -34,6 +34,7 @@ class Filter extends Component {
   render() {
     return (
       <section className="filter-block">
+        <h3>Filter results</h3>
         <div className="filter-block-item">
           <h3>Alcohol by volume</h3>
           <div className="filter-block-input">

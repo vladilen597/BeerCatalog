@@ -4,6 +4,7 @@ label {
 
 .filter-block {
   display: block;
+  text-align: center;
 }
 
 .filter-block-item {

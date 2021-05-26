@@ -8,6 +8,7 @@ const initialState = {
     unit: 0,
     color: 0,
   },
+  favourites: [],
 };
 
 const beersReducer = (state = initialState, action) => {
@@ -23,6 +24,12 @@ const beersReducer = (state = initialState, action) => {
         beers: action.payload,
         error: "",
         isSearched: false,
+        filter: {
+          alcohol: 0,
+          unit: 0,
+          color: 0,
+        },
+        favourites: [],
       };
     case "FETCH_BEERS_ERROR":
       return {
@@ -35,6 +42,12 @@ const beersReducer = (state = initialState, action) => {
       return {
         ...state,
         isSearched: true,
+      };
+    case "ADD_FAVOURITE":
+      console.log(state);
+      return {
+        ...state,
+        favourites: [...state.favourites, action.payload],
       };
     default:
       return state;

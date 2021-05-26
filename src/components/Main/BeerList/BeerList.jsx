@@ -22,11 +22,23 @@ class BeerList extends Component {
                 <p>{item.tagline}</p>
                 <div className="beer-list-item-buttons">
                   <button onClick={() => this.props.getId(item.id)}>
-                    <Link className="beer-link" to={"/" + item.id}>
+                    <Link className="beer-link" to={"/beers/" + item.id}>
                       OPEN
                     </Link>
                   </button>
-                  <button>FAVOURITE</button>
+                  <button
+                    onClick={() => {
+                      if (
+                        this.props.state.favourites.filter(
+                          (like) => like == item.id
+                        ).length === 0
+                      ) {
+                        this.props.addFavourite(item.id);
+                      }
+                    }}
+                  >
+                    FAVOURITE
+                  </button>
                 </div>
               </div>
             </li>
