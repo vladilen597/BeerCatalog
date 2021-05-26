@@ -19,14 +19,14 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Main getId={this.getId} />} />
           <Route
-            path="/beers/:id"
             exact
-            render={() => <SingleBeerConnected id={this.state.id} />}
+            path="/favourite"
+            render={() => <FavouriteBeerConnected getId={this.getId} />}
           />
           <Route
             exact
-            path="/favourite"
-            render={() => <FavouriteBeerConnected />}
+            path="/beers/:id"
+            render={() => <SingleBeerConnected id={this.state.id} />}
           />
         </Switch>
       </Router>

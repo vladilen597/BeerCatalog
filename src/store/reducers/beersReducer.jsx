@@ -29,7 +29,7 @@ const beersReducer = (state = initialState, action) => {
           unit: 0,
           color: 0,
         },
-        favourites: [],
+        favourites: [1, 3, 9],
       };
     case "FETCH_BEERS_ERROR":
       return {

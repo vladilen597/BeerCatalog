@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./BeerList.css";
 
 class BeerList extends Component {
@@ -22,9 +22,9 @@ class BeerList extends Component {
                 <p>{item.tagline}</p>
                 <div className="beer-list-item-buttons">
                   <button onClick={() => this.props.getId(item.id)}>
-                    <Link className="beer-link" to={"/beers/" + item.id}>
+                    <NavLink className="beer-link" to={"/beers/" + item.id}>
                       OPEN
-                    </Link>
+                    </NavLink>
                   </button>
                   <button
                     onClick={() => {
