@@ -9,9 +9,10 @@
 
 .favourite-beers-list-item {
   margin: 0 auto;
-  padding: 10px;
+  padding: 15px 20px;
   width: 60%;
-  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-shadow: 1px 4px 3px 0px #ccc;
 }
 
 .favourite-beers-list-item h3 {
@@ -44,4 +45,25 @@
 
 .item-picture {
   width: 10%;
+}
+
+.open-single-beer {
+  font-weight: 700;
+  color: #000;
+}
+
+.open-single-beer-link {
+  text-decoration: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  font-weight: 700;
+  color: #000;
+}
+
+.remove-favourite {
+  cursor: pointer;
 }

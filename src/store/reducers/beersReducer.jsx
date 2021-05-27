@@ -29,7 +29,7 @@ const beersReducer = (state = initialState, action) => {
           unit: 0,
           color: 0,
         },
-        favourites: [1, 3, 9],
+        favourites: [...state.favourites],
       };
     case "FETCH_BEERS_ERROR":
       return {
@@ -44,10 +44,16 @@ const beersReducer = (state = initialState, action) => {
         isSearched: true,
       };
     case "ADD_FAVOURITE":
-      console.log(state);
       return {
         ...state,
         favourites: [...state.favourites, action.payload],
+      };
+    case "REMOVE_FAVOURITE":
+      return {
+        ...state,
+        favourites: state.favourites.filter((item) => {
+          return item != action.payload;
+        }),
       };
     default:
       return state;

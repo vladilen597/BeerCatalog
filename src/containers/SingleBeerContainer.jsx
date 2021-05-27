@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import SingleBeer from "../components/SingleBeer/SingleBeer.jsx";
-import addFavourite from "../store/actions/addFavourite.jsx";
+import { addFavourite } from "../store/actions/toggleFavourite.jsx";
 
 const mapStateToProps = (state) => {
   return {

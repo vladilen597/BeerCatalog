@@ -7,9 +7,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
+    publicPath: "/",
   },
   devServer: {
     port: 3000,
+    historyApiFallback: true,
   },
   plugins: [new HTMLWebpackPlugin({ template: "./src/index.html" })],
   module: {

@@ -8,8 +8,8 @@ class BeerList extends Component {
   }
 
   render() {
-    const { beers, error } = this.props.state;
-    return this.props.state.loading ? (
+    const { beers, loading } = this.props.state;
+    return loading ? (
       <h1>LOADING...</h1>
     ) : (
       <ul className="beer-list">
@@ -26,18 +26,24 @@ class BeerList extends Component {
                       OPEN
                     </NavLink>
                   </button>
+
                   <button
                     onClick={() => {
+                      console.log(this.props);
                       if (
                         this.props.state.favourites.filter(
                           (like) => like == item.id
                         ).length === 0
                       ) {
                         this.props.addFavourite(item.id);
-                      }
+                      } else this.props.removeFavourite(item.id);
                     }}
                   >
-                    FAVOURITE
+                    {this.props.state.favourites.filter(
+                      (like) => like == item.id
+                    ).length === 0
+                      ? "FAVOURITE"
+                      : "REMOVE FAVOURITE"}
                   </button>
                 </div>
               </div>

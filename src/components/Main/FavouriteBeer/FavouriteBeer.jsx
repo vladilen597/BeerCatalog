@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./FavouriteBeer.css";
 
-const FavouriteBeer = (props) => {
+const FavouriteBeer = ({ getId, removeFavourite, state }) => {
   let arrayLiked = [];
 
   const getLiked = () => {
-    for (let i = 0; i < props.state.beers.length; i++) {
-      for (let j = 0; j < props.state.favourites.length; j++) {
-        if (props.state.beers[i].id == props.state.favourites[j]) {
-          arrayLiked.push(props.state.beers[i]);
+    for (let i = 0; i < state.beers.length; i++) {
+      for (let j = 0; j < state.favourites.length; j++) {
+        if (state.beers[i].id == state.favourites[j]) {
+          arrayLiked.push(state.beers[i]);
         }
       }
     }
@@ -17,13 +17,13 @@ const FavouriteBeer = (props) => {
 
   getLiked();
   return (
-    <div className="favourite-beers">
+    <section className="favourite-beers">
       <h2>Your favourite beers</h2>
       <ul className="favourite-beers-list">
         {arrayLiked.map((item, index) => {
           return (
             <li key={index} className="favourite-beers-list-item">
-              <div className="item">
+              <article className="item">
                 <div className="item-description">
                   <h3>{item.name}</h3>
                   <p className="item-tagline">{item.tagline}</p>
@@ -32,21 +32,36 @@ const FavouriteBeer = (props) => {
                 <div className="item-picture">
                   <img src={item.image_url} />
                 </div>
-              </div>
-              <Link to={"/beers/" + item.id}>
-                <button
+              </article>
+
+              <article className="buttons">
+                <Link
+                  className="open-single-beer-link"
+                  to={"/beers/" + item.id}
+                >
+                  <div
+                    className="open-single-beer"
+                    onClick={() => {
+                      getId(item.id);
+                    }}
+                  >
+                    OPEN
+                  </div>
+                </Link>
+                <div
+                  className="remove-favourite"
                   onClick={() => {
-                    props.getId(item.id);
+                    removeFavourite(item.id);
                   }}
                 >
-                  OPEN
-                </button>
-              </Link>
+                  REMOVE FAVOURITE
+                </div>
+              </article>
             </li>
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 };
 
