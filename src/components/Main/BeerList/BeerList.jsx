@@ -29,7 +29,6 @@ class BeerList extends Component {
 
                   <button
                     onClick={() => {
-                      console.log(this.props);
                       if (
                         this.props.state.favourites.filter(
                           (like) => like == item.id

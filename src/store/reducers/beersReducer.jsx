@@ -29,7 +29,8 @@ const beersReducer = (state = initialState, action) => {
           unit: 0,
           color: 0,
         },
-        favourites: [...state.favourites],
+        favourites:
+          localStorage.length > 0 ? JSON.parse(localStorage.getItem(0)) : [],
       };
     case "FETCH_BEERS_ERROR":
       return {
@@ -44,11 +45,23 @@ const beersReducer = (state = initialState, action) => {
         isSearched: true,
       };
     case "ADD_FAVOURITE":
+      localStorage.setItem(
+        0,
+        JSON.stringify([...state.favourites, action.payload])
+      );
       return {
         ...state,
         favourites: [...state.favourites, action.payload],
       };
     case "REMOVE_FAVOURITE":
+      localStorage.setItem(
+        0,
+        JSON.stringify(
+          state.favourites.filter((item) => {
+            return item != action.payload;
+          })
+        )
+      );
       return {
         ...state,
         favourites: state.favourites.filter((item) => {
