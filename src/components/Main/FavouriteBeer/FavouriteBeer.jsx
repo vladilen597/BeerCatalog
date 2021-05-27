@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./FavouriteBeer.css";
 
 const FavouriteBeer = ({ getId, removeFavourite, state }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pages, setPages] = useState(0);
   let arrayLiked = [];
 
   const getLiked = () => {
@@ -15,52 +17,69 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
     }
   };
 
+  useEffect(() => {
+    setPages(Math.ceil(state.favourites.length / 5));
+  });
+
   getLiked();
+  console.log(pages);
   return (
     <section className="favourite-beers">
       <h2>Your favourite beers</h2>
       <ul className="favourite-beers-list">
-        {arrayLiked.map((item, index) => {
-          return (
-            <li key={index} className="favourite-beers-list-item">
-              <article className="item">
-                <div className="item-description">
-                  <h3>{item.name}</h3>
-                  <p className="item-tagline">{item.tagline}</p>
-                  <p>{item.description}</p>
-                </div>
-                <div className="item-picture">
-                  <img src={item.image_url} />
-                </div>
-              </article>
+        {state.favourites.length === 0 ? (
+          <h2>Seems like you don't like beer. Weird.</h2>
+        ) : (
+          arrayLiked.map((item, index) => {
+            return (
+              <li key={index} className="favourite-beers-list-item">
+                <article className="item">
+                  <div className="item-description">
+                    <h3>{item.name}</h3>
+                    <p className="item-tagline">{item.tagline}</p>
+                    <p>{item.description}</p>
+                  </div>
+                  <div className="item-picture">
+                    <img src={item.image_url} />
+                  </div>
+                </article>
 
-              <article className="buttons">
-                <Link
-                  className="open-single-beer-link"
-                  to={"/beers/" + item.id}
-                >
+                <article className="buttons">
+                  <Link
+                    className="open-single-beer-link"
+                    to={"/beers/" + item.id}
+                  >
+                    <div
+                      className="open-single-beer"
+                      onClick={() => {
+                        getId(item.id);
+                      }}
+                    >
+                      OPEN
+                    </div>
+                  </Link>
                   <div
-                    className="open-single-beer"
+                    className="remove-favourite"
                     onClick={() => {
-                      getId(item.id);
+                      removeFavourite(item.id);
                     }}
                   >
-                    OPEN
+                    REMOVE FAVOURITE
                   </div>
-                </Link>
-                <div
-                  className="remove-favourite"
-                  onClick={() => {
-                    removeFavourite(item.id);
-                  }}
-                >
-                  REMOVE FAVOURITE
-                </div>
-              </article>
-            </li>
-          );
-        })}
+                </article>
+              </li>
+            );
+          })
+        )}
       </ul>
+      {pages > 0 ? (
+        <div>
+          <button>1</button>
+          <button>2</button>
+        </div>
+      ) : (
+        ""
+      )}
     </section>
   );
 };
