@@ -15,14 +15,15 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
     }
   };
 
+  getLiked();
+
   const [favouriteBeer, setFavouriteBeers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [beersPerPage, setBeersPerPage] = useState(5);
 
   useEffect(() => {
-    getLiked();
     setFavouriteBeers(arrayLiked);
-  }, [favouriteBeer]);
+  }, [state.favourites]);
 
   const indexOfLastBeer = currentPage * beersPerPage;
   const indexOfFirstBeer = indexOfLastBeer - beersPerPage;
@@ -35,10 +36,13 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
     pagesArray.push(i);
   }
 
-  console.log(pagesArray);
   return (
     <section className="favourite-beers">
       <h2>Your favourite beers</h2>
+      <select>
+        <option>5</option>
+        <option>10</option>
+      </select>
       <ul className="favourite-beers-list">
         {state.favourites.length === 0 ? (
           <h2>Seems like you don't like beer. Weird.</h2>
