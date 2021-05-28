@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import "./FavouriteBeer.css";
 
 const FavouriteBeer = ({ getId, removeFavourite, state }) => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [pages, setPages] = useState(0);
   let arrayLiked = [];
 
   const getLiked = () => {
@@ -17,12 +15,27 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
     }
   };
 
-  useEffect(() => {
-    setPages(Math.ceil(state.favourites.length / 5));
-  });
+  const [favouriteBeer, setFavouriteBeers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [beersPerPage, setBeersPerPage] = useState(5);
 
-  getLiked();
-  console.log(pages);
+  useEffect(() => {
+    getLiked();
+    setFavouriteBeers(arrayLiked);
+  }, [favouriteBeer]);
+
+  const indexOfLastBeer = currentPage * beersPerPage;
+  const indexOfFirstBeer = indexOfLastBeer - beersPerPage;
+  const currentBeers = favouriteBeer.slice(indexOfFirstBeer, indexOfLastBeer);
+
+  const pages = Math.ceil(favouriteBeer.length / beersPerPage);
+  let pagesArray = [];
+
+  for (let i = 1; i <= pages; i++) {
+    pagesArray.push(i);
+  }
+
+  console.log(pagesArray);
   return (
     <section className="favourite-beers">
       <h2>Your favourite beers</h2>
@@ -30,7 +43,7 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
         {state.favourites.length === 0 ? (
           <h2>Seems like you don't like beer. Weird.</h2>
         ) : (
-          arrayLiked.map((item, index) => {
+          currentBeers.map((item, index) => {
             return (
               <li key={index} className="favourite-beers-list-item">
                 <article className="item">
@@ -72,14 +85,24 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
           })
         )}
       </ul>
-      {pages > 0 ? (
-        <div>
-          <button>1</button>
-          <button>2</button>
-        </div>
-      ) : (
-        ""
-      )}
+      {pagesArray.map((page) => {
+        return (
+          <button
+            className="favourite-beer-page"
+            onClick={() => {
+              setCurrentPage(page);
+            }}
+            key={page}
+            style={
+              currentPage == page
+                ? { backgroundColor: "blue", color: "#fff" }
+                : { backgroundColor: "#fff", color: "#000" }
+            }
+          >
+            {page}
+          </button>
+        );
+      })}
     </section>
   );
 };

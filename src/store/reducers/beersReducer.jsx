@@ -1,3 +1,7 @@
+import FETCH_BEERS from "../../constants/resourses/dictionary/FETCH_BEERS.jsx";
+import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEERS_OPERATIONS.jsx";
+import TOGGLE_FAVOURITE from "../../constants/resourses/dictionary/TOGGLE_FAVOURITE.jsx";
+
 const initialState = {
   loading: false,
   beers: [],
@@ -13,12 +17,12 @@ const initialState = {
 
 const beersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_BEERS_REQUEST":
+    case FETCH_BEERS.REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case "FETCH_BEERS_SUCCESS":
+    case FETCH_BEERS.SUCCESS:
       return {
         loading: false,
         beers: action.payload,
@@ -32,19 +36,19 @@ const beersReducer = (state = initialState, action) => {
         favourites:
           localStorage.length > 0 ? JSON.parse(localStorage.getItem(0)) : [],
       };
-    case "FETCH_BEERS_ERROR":
+    case FETCH_BEERS.FAILURE:
       return {
         loading: false,
         beers: [],
         error: action.payload,
         isSearched: false,
       };
-    case "FIND_BEER":
+    case BEER_OPERATIONS.FIND_BEER:
       return {
         ...state,
         isSearched: true,
       };
-    case "ADD_FAVOURITE":
+    case TOGGLE_FAVOURITE.ADD_FAVOURITE:
       localStorage.setItem(
         0,
         JSON.stringify([...state.favourites, action.payload])
@@ -53,7 +57,7 @@ const beersReducer = (state = initialState, action) => {
         ...state,
         favourites: [...state.favourites, action.payload],
       };
-    case "REMOVE_FAVOURITE":
+    case TOGGLE_FAVOURITE.REMOVE_FAVOURITE:
       localStorage.setItem(
         0,
         JSON.stringify(

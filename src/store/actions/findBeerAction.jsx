@@ -1,8 +1,8 @@
-const FIND_BEER = "FIND_BEER";
+import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEERS_OPERATIONS.jsx";
 
 const findBeer = (beerName) => {
   return {
-    type: FIND_BEER,
+    type: BEER_OPERATIONS.FIND_BEER,
     payload: beerName,
   };
 };

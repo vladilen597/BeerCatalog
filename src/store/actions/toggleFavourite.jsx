@@ -1,16 +1,15 @@
-const ADD_FAVOURITE = "ADD_FAVOURITE";
-const REMOVE_FAVOURITE = "REMOVE_FAVOURITE";
+import TOGGLE_FAVOURITE from "../../constants/resourses/dictionary/TOGGLE_FAVOURITE.jsx";
 
 const addFavourite = (id) => {
   return {
-    type: ADD_FAVOURITE,
+    type: TOGGLE_FAVOURITE.ADD_FAVOURITE,
     payload: id,
   };
 };
 
 const removeFavourite = (id) => {
   return {
-    type: REMOVE_FAVOURITE,
+    type: TOGGLE_FAVOURITE.REMOVE_FAVOURITE,
     payload: id,
   };
 };
