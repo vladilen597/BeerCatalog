@@ -1,7 +1,7 @@
 import React from "react";
 import "./SingleBeer.css";
 
-const SingleBeer = ({ id, state, addFavourite }) => {
+const SingleBeer = ({ id, state, addFavourite, removeFavourite }) => {
   return (
     <div>
       {state.beers.map((item) => {
@@ -12,18 +12,30 @@ const SingleBeer = ({ id, state, addFavourite }) => {
                 <div className="single-beer-description">
                   <h2>{item.name}</h2>
                   <p className="beer-tagline">{item.tagline}</p>
-                  <button
-                    onClick={() => {
-                      if (
-                        state.favourites.filter((like) => like == id).length ===
-                        0
-                      ) {
-                        addFavourite(id);
-                      }
-                    }}
-                  >
-                    ADD TO FAVOURITES
-                  </button>
+                  {state.favourites.filter((like) => {
+                    return like === id;
+                  }).length === 0 ? (
+                    <button
+                      onClick={() => {
+                        if (
+                          state.favourites.filter((like) => like == id)
+                            .length === 0
+                        ) {
+                          addFavourite(id);
+                        }
+                      }}
+                    >
+                      ADD TO FAVOURITES
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        removeFavourite(id);
+                      }}
+                    >
+                      REMOVE FROM FAVOURITES
+                    </button>
+                  )}
                   <p>{item.description}</p>
                 </div>
                 <img src={item.image_url} />
