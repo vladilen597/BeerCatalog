@@ -1,4 +1,4 @@
-import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEERS_OPERATIONS.jsx";
+import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEER_OPERATIONS.jsx";
 
 const findBeer = (beerName) => {
   return {

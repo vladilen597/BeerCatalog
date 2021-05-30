@@ -53,7 +53,11 @@ class Header extends Component {
           </nav>
           Beer catalog
         </nav>
-        <div className="more-button">...</div>
+        <div className="more-button">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
       </header>
     );
   }

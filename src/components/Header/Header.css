@@ -80,3 +80,15 @@
 .active {
   color: rgb(0, 81, 255);
 }
+
+.more-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.dot {
+  margin-bottom: 5px;
+  width: 5px;
+  background-color: #fff;
+  height: 5px;
+}

@@ -1,5 +1,5 @@
 import FETCH_BEERS from "../../constants/resourses/dictionary/FETCH_BEERS.jsx";
-import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEERS_OPERATIONS.jsx";
+import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEER_OPERATIONS.jsx";
 
 const fetchBeersRequest = () => {
   return {
@@ -67,7 +67,7 @@ const filterBeers = (alcohol, unit, color) => {
 
 const filterBeersWithNoFetch = (alcohol, unit, color) => {
   return {
-    type: BEER_OPERATIONS,
+    type: BEER_OPERATIONS.FILTER,
     alcohol: alcohol,
     unit: unit,
     color: color,

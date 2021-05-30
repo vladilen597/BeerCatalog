@@ -1,5 +1,5 @@
 import FETCH_BEERS from "../../constants/resourses/dictionary/FETCH_BEERS.jsx";
-import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEERS_OPERATIONS.jsx";
+import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEER_OPERATIONS.jsx";
 import TOGGLE_FAVOURITE from "../../constants/resourses/dictionary/TOGGLE_FAVOURITE.jsx";
 
 const initialState = {

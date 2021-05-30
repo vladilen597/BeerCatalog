@@ -32,6 +32,7 @@ class Filter extends Component {
   };
 
   render() {
+    console.log(this.props.state);
     return (
       <section className="filter-block">
         <h3>Filter results</h3>
