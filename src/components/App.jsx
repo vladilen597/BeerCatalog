@@ -4,6 +4,7 @@ import Main from "./Main/Main.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SingleBeerConnected from "../containers/SingleBeerContainer.jsx";
 import FavouriteBeerConnected from "../containers/FavouriteBeerContainer.jsx";
+import NotFound from "../NotFound/NotFound.jsx";
 
 class App extends Component {
   state = { id: 0 };
@@ -28,6 +29,7 @@ class App extends Component {
             path="/beers/:id"
             render={() => <SingleBeerConnected id={this.state.id} />}
           />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     );

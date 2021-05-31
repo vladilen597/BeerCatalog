@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./FindField.css";
 import { searchIcon } from "../../../constants/resourses/pictures/picturesImport.jsx";
 import FilterConnected from "../../../containers/FilterContainer.jsx";
@@ -49,3 +50,7 @@ class FindField extends Component {
 }
 
 export default FindField;
+
+FindField.propTypes = {
+  findBeerFetch: PropTypes.func.isRequired,
+};

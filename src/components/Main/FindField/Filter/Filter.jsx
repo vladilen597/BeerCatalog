@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./Filter.css";
 
 class Filter extends Component {
@@ -32,7 +33,6 @@ class Filter extends Component {
   };
 
   render() {
-    console.log(this.props.state);
     return (
       <section className="filter-block">
         <h3>Filter results</h3>
@@ -84,3 +84,7 @@ class Filter extends Component {
 }
 
 export default Filter;
+
+Filter.propTypes = {
+  filterBeers: PropTypes.func.isRequired,
+};

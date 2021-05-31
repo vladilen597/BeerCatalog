@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Header.css";
 import { navIcon } from "../../constants/resourses/pictures/picturesImport.jsx";
 import Drawer from "@material-ui/core/Drawer";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
   homepageIcon,

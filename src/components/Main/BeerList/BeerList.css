@@ -12,8 +12,9 @@
   text-align: center;
   flex-direction: column;
   align-items: center;
-  width: 30%;
+  width: 33%;
   list-style: none;
+  transition: 0.2s;
 }
 
 .beer-list-item img {
@@ -40,7 +41,13 @@
   background: none;
   border: none;
   cursor: pointer;
+  transition: 0.2s;
 }
+
+.beer-list-item-buttons button:hover {
+  font-size: 16px;
+}
+
 .beer-list-item-buttons button:first-child {
   margin-right: 10px;
 }

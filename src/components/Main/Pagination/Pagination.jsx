@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./Pagination.css";
 
 class Pagination extends Component {
@@ -85,5 +86,9 @@ class Pagination extends Component {
     );
   }
 }
+
+Pagination.propTypes = {
+  fetchBeers: PropTypes.func.isRequired,
+};
 
 export default Pagination;

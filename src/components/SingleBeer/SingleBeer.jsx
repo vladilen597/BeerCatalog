@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./SingleBeer.css";
 
 const SingleBeer = ({ id, state, addFavourite, removeFavourite }) => {
@@ -168,3 +169,10 @@ const SingleBeer = ({ id, state, addFavourite, removeFavourite }) => {
 };
 
 export default SingleBeer;
+
+SingleBeer.propTypes = {
+  id: PropTypes.number.isRequired,
+  state: PropTypes.object.isRequired,
+  addFavourite: PropTypes.func.isRequired,
+  removeFavourite: PropTypes.func.isRequired,
+};

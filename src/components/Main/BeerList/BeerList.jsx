@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import "./BeerList.css";
 
 class BeerList extends Component {
@@ -18,7 +19,7 @@ class BeerList extends Component {
             <li key={item.id} className="beer-list-item">
               <img src={item.image_url} />
               <div className="beer-list-item-decription">
-                {item.name}
+                <strong>{item.name}</strong>
                 <p>{item.tagline}</p>
                 <div className="beer-list-item-buttons">
                   <button onClick={() => this.props.getId(item.id)}>
@@ -55,3 +56,10 @@ class BeerList extends Component {
 }
 
 export default BeerList;
+
+BeerList.propTypes = {
+  fetchBeers: PropTypes.func.isRequired,
+  addFavourite: PropTypes.func.isRequired,
+  removeFavourite: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
+};

@@ -1,5 +1,5 @@
-import FETCH_BEERS from "../../constants/resourses/dictionary/FETCH_BEERS.jsx";
-import BEER_OPERATIONS from "../../constants/resourses/dictionary/BEER_OPERATIONS.jsx";
+import FETCH_BEERS from "../../constants/notResourses/dictionary/FETCH_BEERS.jsx";
+import BEER_OPERATIONS from "../../constants/notResourses/dictionary/BEER_OPERATIONS.jsx";
 
 const fetchBeersRequest = () => {
   return {

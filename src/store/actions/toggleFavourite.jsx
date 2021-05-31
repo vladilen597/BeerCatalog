@@ -1,4 +1,4 @@
-import TOGGLE_FAVOURITE from "../../constants/resourses/dictionary/TOGGLE_FAVOURITE.jsx";
+import TOGGLE_FAVOURITE from "../../constants/notResourses/dictionary/TOGGLE_FAVOURITE.jsx";
 
 const addFavourite = (id) => {
   return {

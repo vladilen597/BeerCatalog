@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./FavouriteBeer.css";
 
@@ -44,7 +45,7 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
     <section className="favourite-beers">
       <h2>Your favourite beers</h2>
       <p>Choose the amount of drawn favourite beers</p>
-      <select onChange={handleChange}>
+      <select onChange={handleChange} className="select-beerPerPage">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="25">25</option>
@@ -118,3 +119,9 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
 };
 
 export default FavouriteBeer;
+
+FavouriteBeer.propTypes = {
+  getId: PropTypes.func.isRequired,
+  removeFavourite: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
+};
