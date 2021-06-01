@@ -8,8 +8,17 @@ class BeerList extends Component {
     this.props.fetchBeers();
   }
 
+  handleToggleFavouriteClick = (beer) => {
+    if (
+      this.props.state.favourites.filter((like) => like == beer.id).length === 0
+    ) {
+      this.props.addFavourite(beer.id);
+    } else this.props.removeFavourite(beer.id);
+  };
+
   render() {
-    const { beers, loading } = this.props.state;
+    const {getId, }
+    const { beers, loading, favourites } = this.props.state;
     return loading ? (
       <h1>LOADING...</h1>
     ) : (
@@ -28,20 +37,8 @@ class BeerList extends Component {
                     </NavLink>
                   </button>
 
-                  <button
-                    onClick={() => {
-                      if (
-                        this.props.state.favourites.filter(
-                          (like) => like == item.id
-                        ).length === 0
-                      ) {
-                        this.props.addFavourite(item.id);
-                      } else this.props.removeFavourite(item.id);
-                    }}
-                  >
-                    {this.props.state.favourites.filter(
-                      (like) => like == item.id
-                    ).length === 0
+                  <button onClick={() => this.handleToggleFavouriteClick(item)}>
+                    {favourites.filter((like) => like == item.id).length === 0
                       ? "FAVOURITE"
                       : "REMOVE FAVOURITE"}
                   </button>

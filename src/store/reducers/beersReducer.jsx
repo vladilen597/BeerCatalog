@@ -1,19 +1,7 @@
 import FETCH_BEERS from "../../constants/notResourses/dictionary/FETCH_BEERS.jsx";
 import BEER_OPERATIONS from "../../constants/notResourses/dictionary/BEER_OPERATIONS.jsx";
 import TOGGLE_FAVOURITE from "../../constants/notResourses/dictionary/TOGGLE_FAVOURITE.jsx";
-
-const initialState = {
-  loading: false,
-  beers: [],
-  error: "",
-  isSearched: false,
-  filter: {
-    alcohol: 0,
-    unit: 0,
-    color: 0,
-  },
-  favourites: [],
-};
+import initialState from "../../constants/notResourses/dictionary/initialState.jsx";
 
 const beersReducer = (state = initialState, action) => {
   switch (action.type) {
