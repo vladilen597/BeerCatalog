@@ -1,14 +1,14 @@
 import React from "react";
-import BeerListConnected from "../../containers/BeerListContainer.jsx";
-import FindFieldConnected from "../../containers/FindFieldContainer.jsx";
-import PaginationConnected from "../../containers/PaginationContainer.jsx";
+import BeerListConnect from "../../containers/BeerListContainer.jsx";
+import FindFieldConnect from "../../containers/FindFieldContainer.jsx";
+import PaginationConnect from "../../containers/PaginationContainer.jsx";
 
 const Main = ({ getId }) => {
   return (
     <main>
-      <FindFieldConnected />
-      <BeerListConnected getId={getId} />
-      <PaginationConnected />
+      <FindFieldConnect />
+      <BeerListConnect getId={getId} />
+      <PaginationConnect />
     </main>
   );
 };

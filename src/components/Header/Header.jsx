@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./Header.css";
-import { navIcon } from "../../constants/resourses/pictures/picturesImport.jsx";
+import { navIcon } from "../../constants/pictures/picturesImport.jsx";
 import Drawer from "@material-ui/core/Drawer";
 import { NavLink } from "react-router-dom";
 
 import {
   homepageIcon,
   favouritesIcon,
-} from "../../constants/resourses/pictures/picturesImport.jsx";
+} from "../../constants/pictures/picturesImport.jsx";
 
 class Header extends Component {
   state = { left: false };

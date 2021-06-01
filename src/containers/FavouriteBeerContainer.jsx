@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import FavouriteBeer from "../components/Main/FavouriteBeer/FavouriteBeer.jsx";
-import { removeFavourite } from "../store/actions/toggleFavourite.jsx";
+import { removeFavourite } from "../store/actions/actionCreators/toggleFavourite.jsx";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,9 +14,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const FavouriteBeerConnected = connect(
+const FavouriteBeerConnect = connect(
   mapStateToProps,
   mapDispatchToProps
 )(FavouriteBeer);
 
-export default FavouriteBeerConnected;
+export default FavouriteBeerConnect;

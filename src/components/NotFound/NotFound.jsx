@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { nobeerPicture } from "../../constants/resourses/pictures/picturesImport.jsx";
+import { nobeerPicture } from "../../constants/pictures/picturesImport.jsx";
 import "./NotFound.css";
 
 const NotFound = () => {

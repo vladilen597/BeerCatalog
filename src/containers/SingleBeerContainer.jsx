@@ -3,7 +3,7 @@ import SingleBeer from "../components/SingleBeer/SingleBeer.jsx";
 import {
   addFavourite,
   removeFavourite,
-} from "../store/actions/toggleFavourite.jsx";
+} from "../store/actions/actionCreators/toggleFavourite.jsx";
 
 const mapStateToProps = (state) => {
   return {
@@ -18,9 +18,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const SingleBeerConnected = connect(
+const SingleBeerConnect = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SingleBeer);
 
-export default SingleBeerConnected;
+export default SingleBeerConnect;

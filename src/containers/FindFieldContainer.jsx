@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import FindField from "../components/Main/FindField/FindField.jsx";
-import findBeer from "../store/actions/findBeerAction.jsx";
-import { findBeerFetch } from "../store/actions/fetchBeersAction.jsx";
+import findBeer from "../store/actions/actionCreators/findBeerAction.jsx";
+import { findBeerFetch } from "../store/actions/thunks/fetchBeersAction.jsx";
 
 const mapStateToProps = (state) => {
   return {
@@ -20,9 +20,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const FindFieldConnected = connect(
+const FindFieldConnect = connect(
   mapStateToProps,
   mapDispatchToProps
 )(FindField);
 
-export default FindFieldConnected;
+export default FindFieldConnect;

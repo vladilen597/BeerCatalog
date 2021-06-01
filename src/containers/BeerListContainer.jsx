@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import BeerList from "../components/Main/BeerList/BeerList.jsx";
-import { fetchBeers } from "../store/actions/fetchBeersAction.jsx";
+import { fetchBeers } from "../store/actions/thunks/fetchBeersAction.jsx";
 import {
   addFavourite,
   removeFavourite,
-} from "../store/actions/toggleFavourite.jsx";
+} from "../store/actions/actionCreators/toggleFavourite.jsx";
 
 const mapStateToProps = (state) => {
   return {
@@ -20,9 +20,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const BeerListConnected = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BeerList);
+const BeerListConnect = connect(mapStateToProps, mapDispatchToProps)(BeerList);
 
-export default BeerListConnected;
+export default BeerListConnect;

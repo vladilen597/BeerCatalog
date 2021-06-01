@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./FindField.css";
-import { searchIcon } from "../../../constants/resourses/pictures/picturesImport.jsx";
-import FilterConnected from "../../../containers/FilterContainer.jsx";
+import { searchIcon } from "../../../constants/pictures/picturesImport.jsx";
+import FilterConnect from "../../../containers/FilterContainer.jsx";
 
 class FindField extends Component {
   state = { beerName: "" };
@@ -43,7 +43,7 @@ class FindField extends Component {
             <img className="find-beers-icon" src={searchIcon} />
           </button>
         </div>
-        <FilterConnected />
+        <FilterConnect />
       </section>
     );
   }

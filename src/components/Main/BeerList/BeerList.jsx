@@ -17,7 +17,7 @@ class BeerList extends Component {
   };
 
   render() {
-    const {getId, }
+    const { getId } = this.props;
     const { beers, loading, favourites } = this.props.state;
     return loading ? (
       <h1>LOADING...</h1>
@@ -31,7 +31,7 @@ class BeerList extends Component {
                 <strong>{item.name}</strong>
                 <p>{item.tagline}</p>
                 <div className="beer-list-item-buttons">
-                  <button onClick={() => this.props.getId(item.id)}>
+                  <button onClick={() => getId(item.id)}>
                     <NavLink className="beer-link" to={"/beers/" + item.id}>
                       OPEN
                     </NavLink>

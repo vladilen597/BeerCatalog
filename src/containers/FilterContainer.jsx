@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Filter from "../components/Main/FindField/Filter/Filter.jsx";
-import { filterBeers } from "../store/actions/fetchBeersAction.jsx";
+import { filterBeers } from "../store/actions/thunks/fetchBeersAction.jsx";
 
 const mapStateToProps = (state) => {
   return {
@@ -15,6 +15,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const FilterConnected = connect(mapStateToProps, mapDispatchToProps)(Filter);
+const FilterConnect = connect(mapStateToProps, mapDispatchToProps)(Filter);
 
-export default FilterConnected;
+export default FilterConnect;

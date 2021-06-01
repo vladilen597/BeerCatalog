@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Pagination from "../components/Main/Pagination/Pagination.jsx";
-import { fetchBeers } from "../store/actions/fetchBeersAction.jsx";
+import { fetchBeers } from "../store/actions/thunks/fetchBeersAction.jsx";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,9 +14,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const PaginationConnected = connect(
+const PaginationConnect = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Pagination);
 
-export default PaginationConnected;
+export default PaginationConnect;

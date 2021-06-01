@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SingleBeerConnected from "../containers/SingleBeerContainer.jsx";
-import FavouriteBeerConnected from "../containers/FavouriteBeerContainer.jsx";
+import SingleBeerConnect from "../containers/SingleBeerContainer.jsx";
+import FavouriteBeerConnect from "../containers/FavouriteBeerContainer.jsx";
 import NotFound from "../components/NotFound/NotFound.jsx";
 
 class App extends Component {
@@ -22,12 +22,12 @@ class App extends Component {
           <Route
             exact
             path="/favourite"
-            render={() => <FavouriteBeerConnected getId={this.getId} />}
+            render={() => <FavouriteBeerConnect getId={this.getId} />}
           />
           <Route
             exact
             path="/beers/:id"
-            render={() => <SingleBeerConnected id={this.state.id} />}
+            render={() => <SingleBeerConnect id={this.state.id} />}
           />
           <Route component={NotFound} />
         </Switch>

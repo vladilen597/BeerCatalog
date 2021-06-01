@@ -1,31 +1,9 @@
-import FETCH_BEERS from "../../constants/notResourses/dictionary/FETCH_BEERS.jsx";
-import BEER_OPERATIONS from "../../constants/notResourses/dictionary/BEER_OPERATIONS.jsx";
-
-const fetchBeersRequest = () => {
-  return {
-    type: FETCH_BEERS.REQUEST,
-  };
-};
-
-const fetchBeersSuccess = (beers) => {
-  return {
-    type: FETCH_BEERS.SUCCESS,
-    payload: beers,
-  };
-};
-
-const fetchBeersFailure = (error) => {
-  return {
-    type: FETCH_BEERS.FAILURE,
-    payload: error,
-  };
-};
-
-const findBeer = () => {
-  return {
-    type: BEER_OPERATIONS.FIND_BEER,
-  };
-};
+import {
+  fetchBeersRequest,
+  fetchBeersSuccess,
+  fetchBeersFailure,
+  findBeer,
+} from "../actionCreators/fetchBeers.jsx";
 
 const fetchBeers = (page = 1) => {
   return (dispatch) => {
@@ -65,15 +43,6 @@ const filterBeers = (alcohol, unit, color) => {
   };
 };
 
-const filterBeersWithNoFetch = (alcohol, unit, color) => {
-  return {
-    type: BEER_OPERATIONS.FILTER,
-    alcohol: alcohol,
-    unit: unit,
-    color: color,
-  };
-};
-
 const fetchSingleBeer = (id) => {
   return (dispatch) => {
     dispatch(fetchBeersRequest);
@@ -87,10 +56,4 @@ const fetchSingleBeer = (id) => {
   };
 };
 
-export {
-  fetchBeers,
-  findBeerFetch,
-  filterBeers,
-  fetchSingleBeer,
-  filterBeersWithNoFetch,
-};
+export { fetchBeers, findBeerFetch, filterBeers, fetchSingleBeer };

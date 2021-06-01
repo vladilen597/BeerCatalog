@@ -1,7 +1,7 @@
-import FETCH_BEERS from "../../constants/notResourses/dictionary/FETCH_BEERS.jsx";
-import BEER_OPERATIONS from "../../constants/notResourses/dictionary/BEER_OPERATIONS.jsx";
-import TOGGLE_FAVOURITE from "../../constants/notResourses/dictionary/TOGGLE_FAVOURITE.jsx";
-import initialState from "../../constants/notResourses/dictionary/initialState.jsx";
+import FETCH_BEERS from "../../constants/dictionary/FETCH_BEERS.jsx";
+import BEER_OPERATIONS from "../../constants/dictionary/BEER_OPERATIONS.jsx";
+import TOGGLE_FAVOURITE from "../../constants/dictionary/TOGGLE_FAVOURITE.jsx";
+import initialState from "../../constants/redux/initialState.jsx";
 
 const beersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -12,24 +12,17 @@ const beersReducer = (state = initialState, action) => {
       };
     case FETCH_BEERS.SUCCESS:
       return {
+        ...state,
         loading: false,
         beers: action.payload,
-        error: "",
-        isSearched: false,
-        filter: {
-          alcohol: 0,
-          unit: 0,
-          color: 0,
-        },
         favourites:
           localStorage.length > 0 ? JSON.parse(localStorage.getItem(0)) : [],
       };
     case FETCH_BEERS.FAILURE:
       return {
+        ...state,
         loading: false,
-        beers: [],
         error: action.payload,
-        isSearched: false,
       };
     case BEER_OPERATIONS.FIND_BEER:
       return {
