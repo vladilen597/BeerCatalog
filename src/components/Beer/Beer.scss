@@ -3,11 +3,17 @@
   width: 80%;
   margin: 0 auto;
   margin-top: 50px;
-}
-
-.single-beer h2 {
-  font-size: 40px;
-  margin-bottom: 0;
+  h2 {
+    font-size: 40px;
+    margin-bottom: 0;
+  }
+  img {
+    height: 200px;
+  }
+  h3 {
+    font-size: 30px;
+    font-weight: 300;
+  }
 }
 
 .top-description {
@@ -21,28 +27,22 @@
   display: flex;
   flex-direction: column;
   width: 80%;
+  button {
+    background-color: rgb(0, 81, 255);
+    color: #fff;
+    height: 50px;
+    width: 200px;
+    border: 1px solid #000;
+    box-shadow: 3px 3px 5px -1px #000;
+    cursor: pointer;
+    &:active {
+      background-color: blue;
+    }
+  }
 }
 
 .beer-tagline {
   font-style: italic;
-}
-
-.single-beer-description button {
-  background-color: rgb(0, 81, 255);
-  color: #fff;
-  height: 50px;
-  width: 200px;
-  border: 1px solid #000;
-  box-shadow: 3px 3px 5px -1px #000;
-  cursor: pointer;
-}
-
-.single-beer-description button:active {
-  background-color: blue;
-}
-
-.single-beer img {
-  height: 200px;
 }
 
 .beer-stats {
@@ -58,22 +58,19 @@
   padding: 10px 15px 10px;
   width: 60%;
   border: 1px solid #ccc;
-}
-
-.properties-item:first-child {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.properties-item:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.properties-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
 
 .properties-count {
@@ -95,6 +92,13 @@
   padding: 1px 8px;
   border: 1px solid #000;
   border-radius: 10px;
+  &:hover {
+    + {
+      .tooltip-description {
+        display: block;
+      }
+    }
+  }
 }
 
 .tooltip-description {
@@ -105,10 +109,6 @@
   padding: 3px 5px;
   border-radius: 9px;
   margin-left: 10px;
-}
-
-.tooltip:hover + .tooltip-description {
-  display: block;
 }
 
 .food-pairing {
@@ -124,16 +124,14 @@
   width: 70%;
   padding: 15px 15px 15px;
   border: 1px solid #ccc;
-}
-
-.food-pairing__item:first-child {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.food-pairing__item:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  &:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  &:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
 
 .brewing {
@@ -159,16 +157,14 @@
   padding-left: 10px;
   width: 100%;
   border: 1px solid #ccc;
-}
-
-.ingredients-item:first-child {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.ingredients-item:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  &:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  &:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
 
 .method {
@@ -183,9 +179,4 @@
 
 .method-list-item {
   width: 75%;
-}
-
-.single-beer h3 {
-  font-size: 30px;
-  font-weight: 300;
 }

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import SingleBeer from "../components/SingleBeer/SingleBeer.jsx";
+import Beer from "../components/Beer/Beer.jsx";
 import {
   addFavourite,
   removeFavourite,
@@ -18,9 +18,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const SingleBeerConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SingleBeer);
+const BeerConnect = connect(mapStateToProps, mapDispatchToProps)(Beer);
 
-export default SingleBeerConnect;
+export default BeerConnect;

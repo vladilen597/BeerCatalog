@@ -1,29 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./SingleBeer.css";
+import "./Beer.scss";
+import beerResources from "../../constants/resources/beerResources.jsx";
 
-const SingleBeer = ({ id, state, addFavourite, removeFavourite }) => {
-  const getSingleBeer = () => {
+const Beer = ({ state, addFavourite, removeFavourite }) => {
+  const getBeer = () => {
     return state.beers.filter((beer) => {
-      return beer.id === id;
+      return beer.id === state.id;
     })[0];
   };
 
-  const singleBeer = getSingleBeer();
+  const singleBeer = getBeer();
 
   const toggleFavourite = () => {
     if (
       state.favourites.filter((like) => {
-        return like === id;
+        return like === state.id;
       }).length === 0
     ) {
       return (
         <button
           onClick={() => {
-            addFavourite(id);
+            addFavourite(state.id);
           }}
         >
-          ADD TO FAVOURITES
+          {beerResources.addFavourite}
         </button>
       );
     } else {
@@ -33,7 +34,7 @@ const SingleBeer = ({ id, state, addFavourite, removeFavourite }) => {
             removeFavourite(id);
           }}
         >
-          REMOVE FROM FAVOURITES
+          {beerResources.removeFavourite}
         </button>
       );
     }
@@ -184,10 +185,9 @@ const SingleBeer = ({ id, state, addFavourite, removeFavourite }) => {
   );
 };
 
-export default SingleBeer;
+export default Beer;
 
-SingleBeer.propTypes = {
-  id: PropTypes.number.isRequired,
+Beer.propTypes = {
   state: PropTypes.object.isRequired,
   addFavourite: PropTypes.func.isRequired,
   removeFavourite: PropTypes.func.isRequired,

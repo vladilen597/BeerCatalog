@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import FavouriteBeer from "../components/Main/FavouriteBeer/FavouriteBeer.jsx";
-import { removeFavourite } from "../store/actions/actionCreators/toggleFavourite.jsx";
+import {
+  getId,
+  removeFavourite,
+} from "../store/actions/actionCreators/toggleFavourite.jsx";
 
 const mapStateToProps = (state) => {
   return {
@@ -11,6 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     removeFavourite: (id) => dispatch(removeFavourite(id)),
+    getId: (id) => dispatch(getId(id)),
   };
 };
 

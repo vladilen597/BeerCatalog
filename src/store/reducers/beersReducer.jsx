@@ -53,6 +53,11 @@ const beersReducer = (state = initialState, action) => {
           return item != action.payload;
         }),
       };
+    case TOGGLE_FAVOURITE.GET_ID:
+      return {
+        ...state,
+        id: action.payload,
+      };
     default:
       return state;
   }

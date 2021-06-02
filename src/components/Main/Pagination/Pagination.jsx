@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./Pagination.css";
+import "./Pagination.scss";
 
 class Pagination extends Component {
   state = { currentPage: 1 };
@@ -23,13 +23,18 @@ class Pagination extends Component {
     }
   };
 
-  render() {
-    let paginationArray = [];
-
+  countArrayPages = () => {
+    let tempPagesArray = [];
     for (let i = 2; i <= 19; i++) {
-      paginationArray.push(i);
+      tempPagesArray.push(i);
     }
+    return tempPagesArray;
+  };
 
+  render() {
+    let pagesArray = this.countArrayPages();
+    const { currentPage } = this.state;
+    const { fetchBeers } = this.props;
     return (
       <ul className="pagination-list">
         <li className="pagination-list-item">
@@ -41,10 +46,10 @@ class Pagination extends Component {
           <button
             onClick={() => {
               this.saveCurrentPage(1);
-              this.props.fetchBeers(1);
+              fetchBeers(1);
             }}
             style={
-              this.state.currentPage == 1
+              currentPage == 1
                 ? { backgroundColor: "blue", color: "#fff" }
                 : { backgroundColor: "#fff" }
             }
@@ -52,20 +57,17 @@ class Pagination extends Component {
             1
           </button>
         </li>
-        {paginationArray.map((pageNumber) => {
-          if (
-            pageNumber > this.state.currentPage - 2 &&
-            pageNumber < this.state.currentPage + 3
-          ) {
+        {pagesArray.map((pageNumber) => {
+          if (pageNumber > currentPage - 2 && pageNumber < currentPage + 3) {
             return (
               <li key={pageNumber} className="pagination-list-item">
                 <button
                   onClick={() => {
                     this.saveCurrentPage(pageNumber);
-                    this.props.fetchBeers(pageNumber);
+                    fetchBeers(pageNumber);
                   }}
                   style={
-                    this.state.currentPage == pageNumber
+                    currentPage == pageNumber
                       ? { backgroundColor: "blue", color: "#fff" }
                       : { backgroundColor: "#fff" }
                   }

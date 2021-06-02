@@ -3,11 +3,11 @@ import BeerListConnect from "../../containers/BeerListContainer.jsx";
 import FindFieldConnect from "../../containers/FindFieldContainer.jsx";
 import PaginationConnect from "../../containers/PaginationContainer.jsx";
 
-const Main = ({ getId }) => {
+const Main = () => {
   return (
     <main>
       <FindFieldConnect />
-      <BeerListConnect getId={getId} />
+      <BeerListConnect />
       <PaginationConnect />
     </main>
   );

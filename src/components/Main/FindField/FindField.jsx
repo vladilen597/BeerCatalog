@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./FindField.css";
+import "./FindField.scss";
 import { searchIcon } from "../../../constants/pictures/picturesImport.jsx";
 import FilterConnect from "../../../containers/FilterContainer.jsx";
 
@@ -11,7 +11,7 @@ class FindField extends Component {
     this.setState({ beerName: event.target.value });
   };
 
-  handleClick = (event) => {
+  handlePress = (event) => {
     if (event.key === "Enter") {
       if (this.state.beerName != 0) {
         this.setState({ beerName: event.target.value });
@@ -20,7 +20,14 @@ class FindField extends Component {
     }
   };
 
+  handleClick = () => {
+    if (this.state.beerName != 0) {
+      this.props.findBeerFetch(this.state.beerName);
+    } else alert("Search field is blank!");
+  };
+
   render() {
+    const { value } = this.state;
     return (
       <section>
         <div className="find-beers-container">
@@ -29,17 +36,10 @@ class FindField extends Component {
             type="text"
             placeholder="Search beers..."
             onChange={this.handleChange}
-            onKeyUp={this.handleClick}
-            value={this.state.value}
+            onKeyUp={this.handlePress}
+            value={value}
           />
-          <button
-            className="find-beers-button"
-            onClick={() => {
-              if (this.state.beerName != 0) {
-                this.props.findBeerFetch(this.state.beerName);
-              }
-            }}
-          >
+          <button className="find-beers-button" onClick={this.handleClick}>
             <img className="find-beers-icon" src={searchIcon} />
           </button>
         </div>

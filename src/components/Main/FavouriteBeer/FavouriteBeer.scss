@@ -13,10 +13,14 @@
   width: 60%;
   margin-bottom: 20px;
   box-shadow: 1px 4px 3px 0px #ccc;
-}
-
-.favourite-beers-list-item h3 {
-  margin: 0;
+  h3 {
+    margin: 0;
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+  }
 }
 
 .item-description {
@@ -35,12 +39,6 @@
   margin-top: 5px;
   font-size: 14px;
   color: #aaa;
-}
-
-.favourite-beers-list-item img {
-  display: block;
-  margin: 0 auto;
-  height: 100px;
 }
 
 .item-picture {

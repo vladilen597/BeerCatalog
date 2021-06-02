@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Header.css";
+import "./Header.scss";
 import { navIcon } from "../../constants/pictures/picturesImport.jsx";
 import Drawer from "@material-ui/core/Drawer";
 import { NavLink } from "react-router-dom";
@@ -9,6 +9,9 @@ import {
   favouritesIcon,
 } from "../../constants/pictures/picturesImport.jsx";
 
+import headerResourses from "../../constants/resources/headerResources.jsx";
+import routes from "../../constants/resources/routes.jsx";
+
 class Header extends Component {
   state = { left: false };
 
@@ -17,32 +20,33 @@ class Header extends Component {
   };
 
   render() {
+    const { left } = this.state;
     return (
       <header className="header">
         <Drawer
-          open={this.state.left}
+          open={left}
           onClose={this.toggleDrawer(false)}
           className="drawer"
         >
           <div className="drawer-links">
-            <h2>Beer Catalog</h2>
+            <h2>{headerResourses.header}</h2>
             <div className="links">
               <NavLink
                 exact
-                to="/"
+                to={routes.main}
                 className="home-link"
                 activeClassName="active"
                 onClick={this.toggleDrawer(false)}
               >
-                <img src={homepageIcon} /> Home
+                <img src={homepageIcon} /> {headerResourses.homeLink}
               </NavLink>
               <NavLink
-                to="/favourite"
+                to={routes.favourites}
                 className="favourites-link"
                 activeClassName="active"
                 onClick={this.toggleDrawer(false)}
               >
-                <img src={favouritesIcon} /> Favourites
+                <img src={favouritesIcon} /> {headerResourses.favouritesLink}
               </NavLink>
             </div>
           </div>
@@ -51,7 +55,7 @@ class Header extends Component {
           <nav className="menu-button" onClick={this.toggleDrawer(true)}>
             <img className="menu-button-image" src={navIcon} />
           </nav>
-          Beer catalog
+          {headerResourses.header}
         </nav>
         <div className="more-button">
           <div className="dot"></div>

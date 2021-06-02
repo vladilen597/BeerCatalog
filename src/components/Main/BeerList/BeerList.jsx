@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import "./BeerList.css";
+import "./BeerList.scss";
+
+import beerListResources from "../../../constants/resources/beerListResources.jsx";
+import routes from "../../../constants/resources/routes.jsx";
 
 class BeerList extends Component {
   componentDidMount() {
@@ -20,7 +23,7 @@ class BeerList extends Component {
     const { getId } = this.props;
     const { beers, loading, favourites } = this.props.state;
     return loading ? (
-      <h1>LOADING...</h1>
+      <h1>{beerListResources.loading}</h1>
     ) : (
       <ul className="beer-list">
         {beers.map((item) => {
@@ -32,15 +35,18 @@ class BeerList extends Component {
                 <p>{item.tagline}</p>
                 <div className="beer-list-item-buttons">
                   <button onClick={() => getId(item.id)}>
-                    <NavLink className="beer-link" to={"/beers/" + item.id}>
-                      OPEN
+                    <NavLink
+                      className="beer-link"
+                      to={routes.beerList + item.id}
+                    >
+                      {beerListResources.openBeerLink}
                     </NavLink>
                   </button>
 
                   <button onClick={() => this.handleToggleFavouriteClick(item)}>
                     {favourites.filter((like) => like == item.id).length === 0
-                      ? "FAVOURITE"
-                      : "REMOVE FAVOURITE"}
+                      ? beerListResources.addFavourite
+                      : beerListResources.removeFavourite}
                   </button>
                 </div>
               </div>

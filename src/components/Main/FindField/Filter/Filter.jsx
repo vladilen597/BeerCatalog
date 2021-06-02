@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./Filter.css";
+import "./Filter.scss";
+import filterResources from "../../../../constants/resources/filterResources.jsx";
 
 class Filter extends Component {
   state = { alcohol: 14, IBUnits: 60, color: 52 };
@@ -35,9 +36,9 @@ class Filter extends Component {
   render() {
     return (
       <section className="filter-block">
-        <h3>Filter results</h3>
+        <h3>{filterResources.filterTagline}</h3>
         <div className="filter-block-item">
-          <h3>Alcohol by volume</h3>
+          <h3>{filterResources.filterTagline}</h3>
           <div className="filter-block-input">
             <label from="alcohol-range">{this.state.alcohol}</label>
             <input
@@ -51,7 +52,7 @@ class Filter extends Component {
           </div>
         </div>
         <div className="filter-block-item">
-          <h3>International bitterness units</h3>
+          <h3>{filterResources.filterOptionUnits}</h3>
           <div className="filter-block-input">
             <label from="units-range">{this.state.IBUnits}</label>
             <input
@@ -65,7 +66,7 @@ class Filter extends Component {
           </div>
         </div>
         <div className="filter-block-item">
-          <h3>Color by EBC</h3>
+          <h3>{filterResources.filterOptionColor}</h3>
           <div className="filter-block-input">
             <label from="color-range">{this.state.color}</label>
             <input

@@ -14,4 +14,11 @@ const removeFavourite = (id) => {
   };
 };
 
-export { addFavourite, removeFavourite };
+const getId = (id) => {
+  return {
+    type: TOGGLE_FAVOURITE.GET_ID,
+    payload: id,
+  };
+};
+
+export { addFavourite, removeFavourite, getId };

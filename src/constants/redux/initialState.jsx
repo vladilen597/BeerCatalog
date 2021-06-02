@@ -9,6 +9,7 @@ const initialState = {
     color: 0,
   },
   favourites: [],
+  id: 0,
 };
 
 export default initialState;

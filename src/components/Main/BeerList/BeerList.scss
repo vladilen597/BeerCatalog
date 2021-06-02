@@ -15,10 +15,9 @@
   width: 33%;
   list-style: none;
   transition: 0.2s;
-}
-
-.beer-list-item img {
-  height: 200px;
+  img {
+    height: 200px;
+  }
 }
 
 .beer-list-item-decription {
@@ -31,25 +30,22 @@
   align-items: center;
   background-color: grey;
   color: #fff;
-}
-
-.beer-list-item-buttons button {
-  font-size: 14px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: 700;
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.beer-list-item-buttons button:hover {
-  font-size: 16px;
-}
-
-.beer-list-item-buttons button:first-child {
-  margin-right: 10px;
+  button {
+    font-size: 14px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      font-size: 16px;
+    }
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
 }
 
 .beer-link {
