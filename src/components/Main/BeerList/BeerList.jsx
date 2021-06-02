@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import "./BeerList.scss";
@@ -6,57 +6,55 @@ import "./BeerList.scss";
 import beerListResources from "../../../constants/resources/beerListResources.jsx";
 import routes from "../../../constants/resources/routes.jsx";
 
-class BeerList extends Component {
-  componentDidMount() {
-    this.props.fetchBeers();
-  }
+const BeerList = ({
+  state,
+  fetchBeers,
+  addFavourite,
+  removeFavourite,
+  getId,
+}) => {
+  useEffect(() => {
+    fetchBeers();
+  }, []);
 
-  handleToggleFavouriteClick = (beer) => {
-    if (
-      this.props.state.favourites.filter((like) => like == beer.id).length === 0
-    ) {
-      this.props.addFavourite(beer.id);
-    } else this.props.removeFavourite(beer.id);
+  const handleToggleFavouriteClick = (beer) => {
+    if (state.favourites.filter((like) => like == beer.id).length === 0) {
+      addFavourite(beer.id);
+    } else removeFavourite(beer.id);
   };
 
-  render() {
-    const { getId } = this.props;
-    const { beers, loading, favourites } = this.props.state;
-    return loading ? (
-      <h1>{beerListResources.loading}</h1>
-    ) : (
-      <ul className="beer-list">
-        {beers.map((item) => {
-          return (
-            <li key={item.id} className="beer-list-item">
-              <img src={item.image_url} />
-              <div className="beer-list-item-decription">
-                <strong>{item.name}</strong>
-                <p>{item.tagline}</p>
-                <div className="beer-list-item-buttons">
-                  <button onClick={() => getId(item.id)}>
-                    <NavLink
-                      className="beer-link"
-                      to={routes.beerList + item.id}
-                    >
-                      {beerListResources.openBeerLink}
-                    </NavLink>
-                  </button>
+  const { beers, loading, favourites } = state;
+  return loading ? (
+    <h1>{beerListResources.loading}</h1>
+  ) : (
+    <ul className="beer-list">
+      {beers.map((item) => {
+        return (
+          <li key={item.id} className="beer-list-item">
+            <img src={item.image_url} />
+            <div className="beer-list-item-decription">
+              <strong>{item.name}</strong>
+              <p>{item.tagline}</p>
+              <div className="beer-list-item-buttons">
+                <button onClick={() => getId(item.id)}>
+                  <NavLink className="beer-link" to={routes.beerList + item.id}>
+                    {beerListResources.openBeerLink}
+                  </NavLink>
+                </button>
 
-                  <button onClick={() => this.handleToggleFavouriteClick(item)}>
-                    {favourites.filter((like) => like == item.id).length === 0
-                      ? beerListResources.addFavourite
-                      : beerListResources.removeFavourite}
-                  </button>
-                </div>
+                <button onClick={() => handleToggleFavouriteClick(item)}>
+                  {favourites.filter((like) => like == item.id).length === 0
+                    ? beerListResources.addFavourite
+                    : beerListResources.removeFavourite}
+                </button>
               </div>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
-}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
 export default BeerList;
 
