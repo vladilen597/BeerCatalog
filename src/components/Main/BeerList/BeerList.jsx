@@ -18,9 +18,10 @@ const BeerList = ({
   }, []);
 
   const handleToggleFavouriteClick = (beer) => {
+    getId(beer.id);
     if (state.favourites.filter((like) => like == beer.id).length === 0) {
-      addFavourite(beer.id);
-    } else removeFavourite(beer.id);
+      addFavourite();
+    } else removeFavourite();
   };
 
   const { beers, loading, favourites } = state;

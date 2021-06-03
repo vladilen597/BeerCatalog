@@ -1,0 +1,6 @@
+const BEER_OPERATION = {
+  FIND_BEER: "FIND_BEER",
+  FILTER: "FILTER",
+};
+
+export default BEER_OPERATION;

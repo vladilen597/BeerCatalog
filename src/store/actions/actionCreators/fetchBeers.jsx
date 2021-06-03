@@ -1,5 +1,5 @@
 import FETCH_BEERS from "../../../constants/dictionary/FETCH_BEERS.jsx";
-import BEER_OPERATIONS from "../../../constants/dictionary/BEER_OPERATIONS.jsx";
+import BEER_OPERATION from "../../../constants/dictionary/BEER_OPERATION.jsx";
 
 const fetchBeersRequest = () => {
   return {
@@ -23,7 +23,7 @@ const fetchBeersFailure = (error) => {
 
 const findBeer = () => {
   return {
-    type: BEER_OPERATIONS.FIND_BEER,
+    type: BEER_OPERATION.FIND_BEER,
   };
 };
 

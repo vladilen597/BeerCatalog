@@ -16,8 +16,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchBeers: () => dispatch(fetchBeers()),
-    addFavourite: (id) => dispatch(addFavourite(id)),
-    removeFavourite: (id) => dispatch(removeFavourite(id)),
+    addFavourite: () => dispatch(addFavourite()),
+    removeFavourite: () => dispatch(removeFavourite()),
     getId: (id) => dispatch(getId(id)),
   };
 };

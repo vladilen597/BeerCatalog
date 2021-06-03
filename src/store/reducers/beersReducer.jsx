@@ -1,5 +1,5 @@
 import FETCH_BEERS from "../../constants/dictionary/FETCH_BEERS.jsx";
-import BEER_OPERATIONS from "../../constants/dictionary/BEER_OPERATIONS.jsx";
+import BEER_OPERATION from "../../constants/dictionary/BEER_OPERATION.jsx";
 import TOGGLE_FAVOURITE from "../../constants/dictionary/TOGGLE_FAVOURITE.jsx";
 import initialState from "../../constants/redux/initialState.jsx";
 
@@ -24,33 +24,30 @@ const beersReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
-    case BEER_OPERATIONS.FIND_BEER:
+    case BEER_OPERATION.FIND_BEER:
       return {
         ...state,
         isSearched: true,
       };
     case TOGGLE_FAVOURITE.ADD_FAVOURITE:
-      localStorage.setItem(
-        0,
-        JSON.stringify([...state.favourites, action.payload])
-      );
+      localStorage.setItem(0, JSON.stringify([...state.favourites, state.id]));
       return {
         ...state,
-        favourites: [...state.favourites, action.payload],
+        favourites: [...state.favourites, state.id],
       };
     case TOGGLE_FAVOURITE.REMOVE_FAVOURITE:
       localStorage.setItem(
         0,
         JSON.stringify(
           state.favourites.filter((item) => {
-            return item != action.payload;
+            return item != state.id;
           })
         )
       );
       return {
         ...state,
         favourites: state.favourites.filter((item) => {
-          return item != action.payload;
+          return item != state.id;
         }),
       };
     case TOGGLE_FAVOURITE.GET_ID:

@@ -1,7 +1,9 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
 
-module.exports = {
+module.exports = smp.wrap({
   mode: "development",
   entry: ["@babel/polyfill", "./src/index.jsx"],
   output: {
@@ -42,4 +44,4 @@ module.exports = {
       },
     ],
   },
-};
+});

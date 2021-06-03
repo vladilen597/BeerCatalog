@@ -1,0 +1,46 @@
+.brewing {
+    display: flex;
+    justify-content: space-between;
+}
+
+.brewers-tips {
+    width: 80%;
+}
+
+.ingredients {
+    width: 32%;
+    margin-top: 50px;
+}
+
+.ingredients-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ingredients-item {
+    padding-left: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    &:first-child {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    &:last-child {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+.method {
+    margin-top: 50px;
+    width: 50%;
+}
+
+.method-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.method-list-item {
+    width: 75%;
+}

@@ -46,6 +46,11 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
 
   const pagesArray = countPages();
 
+  const handleRemoveFavourite = (id) => {
+    getId(id);
+    removeFavourite();
+  };
+
   const handleChange = (event) => {
     setBeersPerPage(event.target.value);
   };
@@ -93,9 +98,7 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
                   </Link>
                   <div
                     className="remove-favourite"
-                    onClick={() => {
-                      removeFavourite(item.id);
-                    }}
+                    onClick={() => handleRemoveFavourite(item.id)}
                   >
                     {beerListResources.removeFavourite}
                   </div>

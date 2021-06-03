@@ -1,6 +1,0 @@
-const BEER_OPERATIONS = {
-  FIND_BEER: "FIND_BEER",
-  FILTER: "FILTER",
-};
-
-export default BEER_OPERATIONS;

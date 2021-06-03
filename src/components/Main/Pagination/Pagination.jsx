@@ -1,8 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Pagination.scss";
 
-const Pagination = (props) => {
+const Pagination = ({ fetchBeers }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const saveCurrentPage = (page) => {
@@ -12,14 +12,14 @@ const Pagination = (props) => {
   const decrementArrow = () => {
     if (currentPage > 1) {
       setCurrentPage((page) => page - 1);
-      props.fetchBeers(currentPage - 1);
+      fetchBeers(currentPage - 1);
     }
   };
 
   const incrementArrow = () => {
     if (currentPage < 19) {
       setCurrentPage((page) => page + 1);
-      props.fetchBeers(currentPage + 1);
+      fetchBeers(currentPage + 1);
     }
   };
 
@@ -32,7 +32,6 @@ const Pagination = (props) => {
   };
 
   let pagesArray = countArrayPages();
-  const { fetchBeers } = props;
   return (
     <ul className="pagination-list">
       <li className="pagination-list-item">

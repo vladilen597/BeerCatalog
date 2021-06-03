@@ -3,6 +3,7 @@ import Beer from "../components/Beer/Beer.jsx";
 import {
   addFavourite,
   removeFavourite,
+  getId,
 } from "../store/actions/actionCreators/toggleFavourite.jsx";
 
 const mapStateToProps = (state) => {
@@ -13,8 +14,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFavourite: (id) => dispatch(addFavourite(id)),
-    removeFavourite: (id) => dispatch(removeFavourite(id)),
+    addFavourite: () => dispatch(addFavourite()),
+    removeFavourite: () => dispatch(removeFavourite()),
+    getId: (id) => dispatch(getId(id)),
   };
 };
 
