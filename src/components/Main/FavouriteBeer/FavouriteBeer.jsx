@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  getId,
+  removeFavourite,
+} from "../../../store/actions/actionCreators/toggleFavourite.jsx";
 import "./FavouriteBeer.scss";
 
 import favouriteBeerResources from "../../../constants/resources/favouriteBeerResources.jsx";
@@ -130,7 +135,25 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
   );
 };
 
-export default FavouriteBeer;
+const mapStateToProps = (state) => {
+  return {
+    state: state.beersReducer,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeFavourite: (id) => dispatch(removeFavourite(id)),
+    getId: (id) => dispatch(getId(id)),
+  };
+};
+
+const FavouriteBeerConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FavouriteBeer);
+
+export default FavouriteBeerConnect;
 
 FavouriteBeer.propTypes = {
   getId: PropTypes.func.isRequired,

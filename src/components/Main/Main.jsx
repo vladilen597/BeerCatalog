@@ -1,7 +1,7 @@
 import React from "react";
-import BeerListConnect from "../../containers/BeerListContainer.jsx";
-import FindFieldConnect from "../../containers/FindFieldContainer.jsx";
-import PaginationConnect from "../../containers/PaginationContainer.jsx";
+import BeerListConnect from "../../components/Main/BeerList/BeerList.jsx";
+import FindFieldConnect from "../../components/Main/FindField/FindField.jsx";
+import PaginationConnect from "../../components/Main/Pagination/Pagination.jsx";
 
 const Main = () => {
   return (

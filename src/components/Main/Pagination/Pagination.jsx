@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import "./Pagination.scss";
+
+import { fetchBeers } from "../../../store/actions/thunks/fetchBeersAction.jsx";
 
 const Pagination = ({ fetchBeers }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -85,8 +88,25 @@ const Pagination = ({ fetchBeers }) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    state: state.beersReducer,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchBeers: (page) => dispatch(fetchBeers(page)),
+  };
+};
+
+const PaginationConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Pagination);
+
+export default PaginationConnect;
+
 Pagination.propTypes = {
   fetchBeers: PropTypes.func.isRequired,
 };
-
-export default Pagination;

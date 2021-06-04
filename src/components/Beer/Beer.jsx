@@ -1,9 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Beer.scss";
 import beerResources from "../../constants/resources/beerResources.jsx";
 import BeerStats from "./BeerStats/BeerStats.jsx";
 import BeerBrewing from "./BeerBrewing/BeerBrewing.jsx";
+import { connect } from "react-redux";
+import {
+  addFavourite,
+  removeFavourite,
+  getId,
+} from "../../store/actions/actionCreators/toggleFavourite.jsx";
+
+import "./Beer.scss";
 
 const Beer = ({ state, addFavourite, removeFavourite }) => {
   const getBeer = () => {
@@ -49,8 +56,23 @@ const Beer = ({ state, addFavourite, removeFavourite }) => {
   );
 };
 
-export default Beer;
+const mapStateToProps = (state) => {
+  return {
+    state: state.beersReducer,
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addFavourite: () => dispatch(addFavourite()),
+    removeFavourite: () => dispatch(removeFavourite()),
+    getId: (id) => dispatch(getId(id)),
+  };
+};
+
+const BeerConnect = connect(mapStateToProps, mapDispatchToProps)(Beer);
+
+export default BeerConnect;
 Beer.propTypes = {
   state: PropTypes.object.isRequired,
   addFavourite: PropTypes.func.isRequired,

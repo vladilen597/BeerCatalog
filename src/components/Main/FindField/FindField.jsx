@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./FindField.scss";
 import { searchIcon } from "../../../constants/pictures/picturesImport.jsx";
-import FilterConnect from "../../../containers/FilterContainer.jsx";
-
-let renderCount = 0;
+import { findBeerFetch } from "../../../store/actions/thunks/fetchBeersAction.jsx";
+import FilterConnect from "../../../components/Main/FindField/Filter/Filter.jsx";
 
 const FindField = React.memo(
   ({ findBeerFetch }) => {
-    console.warn("FindField render: " + ++renderCount);
     const [beerName, setBeerName] = useState("");
 
     const handleChange = (event) => {
@@ -57,7 +56,29 @@ const FindField = React.memo(
   }
 );
 
-export default FindField;
+const mapStateToProps = (state) => {
+  return {
+    state: state.beersReducer,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    findBeer: (beerName) => {
+      dispatch(findBeer(beerName));
+    },
+    findBeerFetch: (beerName) => {
+      dispatch(findBeerFetch(beerName));
+    },
+  };
+};
+
+const FindFieldConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FindField);
+
+export default FindFieldConnect;
 
 FindField.propTypes = {
   findBeerFetch: PropTypes.func.isRequired,

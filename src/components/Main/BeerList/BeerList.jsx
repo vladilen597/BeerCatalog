@@ -1,10 +1,18 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import "./BeerList.scss";
 
 import beerListResources from "../../../constants/resources/beerListResources.jsx";
 import routes from "../../../constants/resources/routes.jsx";
+
+import { fetchBeers } from "../../../store/actions/thunks/fetchBeersAction.jsx";
+import {
+  addFavourite,
+  removeFavourite,
+  getId,
+} from "../../../store/actions/actionCreators/toggleFavourite.jsx";
 
 const BeerList = ({
   state,
@@ -57,11 +65,28 @@ const BeerList = ({
   );
 };
 
-export default BeerList;
-
 BeerList.propTypes = {
   fetchBeers: PropTypes.func.isRequired,
   addFavourite: PropTypes.func.isRequired,
   removeFavourite: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
 };
+
+const mapStateToProps = (state) => {
+  return {
+    state: state.beersReducer,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchBeers: () => dispatch(fetchBeers()),
+    addFavourite: () => dispatch(addFavourite()),
+    removeFavourite: () => dispatch(removeFavourite()),
+    getId: (id) => dispatch(getId(id)),
+  };
+};
+
+const BeerListConnect = connect(mapStateToProps, mapDispatchToProps)(BeerList);
+
+export default BeerListConnect;

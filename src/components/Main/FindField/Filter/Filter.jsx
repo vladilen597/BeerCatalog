@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./Filter.scss";
 import filterResources from "../../../../constants/resources/filterResources.jsx";
 
-let renderCount = 0;
+import { filterBeers } from "../../../../store/actions/thunks/fetchBeersAction.jsx";
+
 const Filter = React.memo(
   ({ filterBeers }) => {
-    console.warn("Filter render: " + ++renderCount);
     const [alcohol, setAlcohol] = useState(14);
     const [unit, setUnit] = useState(60);
     const [color, setColor] = useState(52);
@@ -82,7 +83,22 @@ const Filter = React.memo(
   }
 );
 
-export default Filter;
+const mapStateToProps = (state) => {
+  return {
+    state: state.beersReducer,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterBeers: (alcohol, unit, color) =>
+      dispatch(filterBeers(alcohol, unit, color)),
+  };
+};
+
+const FilterConnect = connect(mapStateToProps, mapDispatchToProps)(Filter);
+
+export default FilterConnect;
 
 Filter.propTypes = {
   filterBeers: PropTypes.func.isRequired,
