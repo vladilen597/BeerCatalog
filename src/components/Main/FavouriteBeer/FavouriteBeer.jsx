@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./FavouriteBeer.scss";
@@ -8,7 +8,7 @@ import beerListResources from "../../../constants/resources/beerListResources.js
 import routes from "../../../constants/resources/routes.jsx";
 
 const FavouriteBeer = ({ getId, removeFavourite, state }) => {
-  const getLiked = () => {
+  const getLiked = useMemo(() => {
     let tempArray = [];
     for (let i = 0; i < state.beers.length; i++) {
       for (let j = 0; j < state.favourites.length; j++) {
@@ -18,9 +18,9 @@ const FavouriteBeer = ({ getId, removeFavourite, state }) => {
       }
     }
     return tempArray;
-  };
+  }, [state.favourites]);
 
-  const arrayLiked = getLiked();
+  const arrayLiked = getLiked;
 
   const [favouriteBeer, setFavouriteBeers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
