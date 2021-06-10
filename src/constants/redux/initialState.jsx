@@ -1,5 +1,5 @@
 const initialState = {
-  loading: false,
+  isLoading: false,
   beers: [],
   error: "",
   isSearched: false,

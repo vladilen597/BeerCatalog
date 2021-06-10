@@ -8,12 +8,12 @@ const beersReducer = (state = initialState, action) => {
     case FETCH_BEERS.REQUEST:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
       };
     case FETCH_BEERS.SUCCESS:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         beers: action.payload,
         favourites:
           localStorage.length > 0 ? JSON.parse(localStorage.getItem(0)) : [],
@@ -21,7 +21,7 @@ const beersReducer = (state = initialState, action) => {
     case FETCH_BEERS.FAILURE:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         error: action.payload,
       };
     case BEER_OPERATION.FIND_BEER:

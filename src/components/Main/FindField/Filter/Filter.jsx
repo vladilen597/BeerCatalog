@@ -14,17 +14,26 @@ const Filter = React.memo(
 
     const handleAlcoholChange = (event) => {
       setAlcohol(event.target.value);
-      filterBeers(alcohol, unit, color);
+    };
+
+    const fetchAlcohol = (event) => {
+      filterBeers(event.target.value, unit, color);
     };
 
     const handleUnitChange = (event) => {
       setUnit(event.target.value);
-      filterBeers(alcohol, unit, color);
+    };
+
+    const fetchUnit = (event) => {
+      filterBeers(alcohol, event.target.value, color);
     };
 
     const handleColorChange = (event) => {
       setColor(event.target.value);
-      filterBeers(alcohol, unit, color);
+    };
+
+    const fetchColor = (event) => {
+      filterBeers(alcohol, unit, event.target.value);
     };
 
     return (
@@ -40,6 +49,7 @@ const Filter = React.memo(
               max="14"
               step="0.1"
               onChange={handleAlcoholChange}
+              onMouseUp={fetchAlcohol}
               name="alcohol-range"
             />
           </div>
@@ -54,6 +64,7 @@ const Filter = React.memo(
               max="120"
               step="20"
               onChange={handleUnitChange}
+              onMouseUp={fetchUnit}
               name="units-range"
             />
           </div>
@@ -68,6 +79,7 @@ const Filter = React.memo(
               max="80"
               step="4"
               onChange={handleColorChange}
+              onMouseUp={fetchColor}
               name="color-range"
             />
           </div>

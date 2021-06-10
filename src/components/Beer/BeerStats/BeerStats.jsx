@@ -1,4 +1,5 @@
 import React from "react";
+import beerStatsResources from "../../../constants/resources/beerStatsResources.jsx";
 import "./BeerStats.scss";
 
 const BeerStats = ({ beer }) => {
@@ -16,35 +17,42 @@ const BeerStats = ({ beer }) => {
     <div>
       <section className="beer-stats">
         <div className="properties">
-          <h3>Properties</h3>
+          <h3>{beerStatsResources.properties.name}</h3>
           <div className="properties-block">
             <article className="properties-item">
               <section className="properties-name">
-                ABV<div className="tooltip">i</div>
-                <div className="tooltip-description">Alcohol by volume</div>
+                {beerStatsResources.properties.abv.abbreviation}
+                <div className="tooltip">i</div>
+                <div className="tooltip-description">
+                  {beerStatsResources.properties.abv.fullName}
+                </div>
               </section>
               <div className="properties-count">{beer.abv}</div>
             </article>
             <article className="properties-item">
               <section className="properties-name">
-                IBU<div className="tooltip">i</div>
+                {beerStatsResources.properties.ibu.abbreviation}
+                <div className="tooltip">i</div>
                 <div className="tooltip-description">
-                  International bitterness units
+                  {beerStatsResources.properties.ibu.fullName}
                 </div>
               </section>
               <div className="properties-count">{beer.ibu}</div>
             </article>
             <article className="properties-item">
               <section className="properties-name">
-                EBC<div className="tooltip">i</div>
-                <div className="tooltip-description">Color by EBC</div>
+                {beerStatsResources.properties.ebc.abbreviation}
+                <div className="tooltip">i</div>
+                <div className="tooltip-description">
+                  {beerStatsResources.properties.abv.fullName}
+                </div>
               </section>
               <div className="properties-count">{beer.ebc}</div>
             </article>
           </div>
         </div>
         <div className="food-pairing">
-          <h3>Food Pairing</h3>
+          <h3>{beerStatsResources.foodPairing}</h3>
           <div className="food-pairing-block">
             <ul className="food-pairing-list">{getFoodPairing()}</ul>
           </div>

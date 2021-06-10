@@ -12,7 +12,7 @@ import {
 import headerResourses from "../../constants/resources/headerResources.jsx";
 import routes from "../../constants/resources/routes.jsx";
 
-const Header = () => {
+const Header = React.memo(() => {
   const [left, setLeft] = useState(false);
 
   const toggleDrawer = (open) => () => {
@@ -58,6 +58,6 @@ const Header = () => {
       </div>
     </header>
   );
-};
+});
 
 export default Header;

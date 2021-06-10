@@ -2,8 +2,7 @@ import {
   fetchBeersRequest,
   fetchBeersSuccess,
   fetchBeersFailure,
-  findBeer,
-} from "../actionCreators/fetchBeers.jsx";
+} from "./fetchBeers.jsx";
 
 const fetchBeers = (page = 1) => {
   return (dispatch) => {
@@ -22,7 +21,6 @@ const findBeerFetch = (name) => {
       .then((res) => res.json())
       .then((data) => {
         dispatch(fetchBeersSuccess(data));
-        dispatch(findBeer());
       })
       .catch((error) => dispatch(fetchBeersFailure(error)));
   };
@@ -36,8 +34,8 @@ const filterBeers = (alcohol, unit, color) => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(alcohol, unit, color);
         dispatch(fetchBeersSuccess(data));
-        dispatch(findBeer());
       })
       .catch((error) => dispatch(fetchBeersFailure(error)));
   };
@@ -50,7 +48,6 @@ const fetchSingleBeer = (id) => {
       .then((res) => res.json())
       .then((data) => {
         dispatch(fetchBeersSuccess(data));
-        dispatch(findBeer());
       })
       .catch((error) => dispatch(fetchBeersFailure(error)));
   };

@@ -12,7 +12,7 @@ import {
 
 import "./Beer.scss";
 
-const Beer = ({ state, addFavourite, removeFavourite }) => {
+const Beer = React.memo(({ state, addFavourite, removeFavourite }) => {
   const getBeer = () => {
     return state.beers.filter((beer) => {
       return beer.id === state.id;
@@ -54,7 +54,7 @@ const Beer = ({ state, addFavourite, removeFavourite }) => {
       <BeerBrewing beer={beer} />
     </main>
   );
-};
+});
 
 const mapStateToProps = (state) => {
   return {

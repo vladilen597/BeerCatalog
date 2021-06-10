@@ -21,10 +21,4 @@ const fetchBeersFailure = (error) => {
   };
 };
 
-const findBeer = () => {
-  return {
-    type: BEER_OPERATION.FIND_BEER,
-  };
-};
-
-export { fetchBeersRequest, fetchBeersSuccess, fetchBeersFailure, findBeer };
+export { fetchBeersRequest, fetchBeersSuccess, fetchBeersFailure };

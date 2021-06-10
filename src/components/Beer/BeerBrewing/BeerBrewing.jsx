@@ -1,7 +1,8 @@
 import React from "react";
+import beerBrewingResources from "../../../constants/resources/beerBrewingResources.jsx";
 import "./BeerBrewing.scss";
 
-const BeerBrewing = ({ beer }) => {
+const BeerBrewing = React.memo(({ beer }) => {
   const getIngredientsMalt = () => {
     return beer.ingredients.malt.map((item, index) => {
       return (
@@ -38,12 +39,12 @@ const BeerBrewing = ({ beer }) => {
   return (
     <div>
       <section>
-        <h3>Brewing</h3>
+        <h3>{beerBrewingResources.brewing}</h3>
         <p className="brewers-tips">{beer.brewers_tips}</p>
       </section>
       <section className="brewing">
         <article className="ingredients">
-          <h3>Ingredients</h3>
+          <h3>{beerBrewingResources.ingredients.name}</h3>
           <ul className="ingredients-list">
             <li className="ingredients-item">
               <h4>Water</h4>
@@ -52,33 +53,33 @@ const BeerBrewing = ({ beer }) => {
               </p>
             </li>
             <li className="ingredients-item">
-              <h4>Malt</h4>
+              <h4>{beerBrewingResources.ingredients.malt}</h4>
               {getIngredientsMalt()}
             </li>
             <li className="ingredients-item">
-              <h4>Hops</h4>
+              <h4>{beerBrewingResources.ingredients.hop}</h4>
               {getIngredientsHops()}
             </li>
             <li className="ingredients-item">
-              <h4>Yeast</h4>
+              <h4>{beerBrewingResources.ingredients.yeast}</h4>
               <p>{beer.ingredients.yeast}</p>
             </li>
           </ul>
         </article>
         <article className="method">
-          <h3>Method</h3>
+          <h3>{beerBrewingResources.method.name}</h3>
           <ul className="method-list">
             <li className="method-list-item">
-              <h4>Mash</h4>
+              <h4>{beerBrewingResources.method.mash}</h4>
               {getMethodMash()}
             </li>
             <li className="method-list-item">
-              <h4>Fermentation</h4>
+              <h4>{beerBrewingResources.method.fermentation}</h4>
               Perform at {beer.method.fermentation.temp.value}{" "}
               {beer.method.fermentation.temp.unit == "celsius" ? "C" : "F"}
             </li>
             <li className="method-list-item">
-              <h4>Twist</h4>
+              <h4>{beerBrewingResources.method.twist}</h4>
               {beer.method.twist}
             </li>
           </ul>
@@ -86,6 +87,6 @@ const BeerBrewing = ({ beer }) => {
       </section>
     </div>
   );
-};
+});
 
 export default BeerBrewing;
