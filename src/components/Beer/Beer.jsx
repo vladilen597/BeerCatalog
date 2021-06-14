@@ -11,54 +11,60 @@ import {
 } from "../../store/actions/actionCreators/toggleFavourite.jsx";
 
 import "./Beer.scss";
+import { getBeersSelector } from "../../selectors/beerListSelector.jsx";
+import { getFavouriteBeersSelector } from "../../selectors/favouritesSelector.jsx";
 
-const Beer = React.memo(({ state, addFavourite, removeFavourite }) => {
-  const getBeer = () => {
-    return state.beers.filter((beer) => {
-      return beer.id === state.id;
-    })[0];
-  };
+const Beer = React.memo(
+  ({ beers, id, favourites, addFavourite, removeFavourite }) => {
+    const getBeer = () => {
+      return beers.filter((beer) => {
+        return beer.id === id;
+      })[0];
+    };
 
-  const beer = getBeer();
+    const beer = getBeer();
 
-  const toggleFavourite = () => {
-    if (
-      state.favourites.filter((like) => {
-        return like === state.id;
-      }).length === 0
-    ) {
-      return (
-        <button onClick={addFavourite}>{beerResources.addFavourite}</button>
-      );
-    } else {
-      return (
-        <button onClick={removeFavourite}>
-          {beerResources.removeFavourite}
-        </button>
-      );
-    }
-  };
+    const toggleFavourite = () => {
+      if (
+        favourites.filter((like) => {
+          return like === id;
+        }).length === 0
+      ) {
+        return (
+          <button onClick={addFavourite}>{beerResources.addFavourite}</button>
+        );
+      } else {
+        return (
+          <button onClick={removeFavourite}>
+            {beerResources.removeFavourite}
+          </button>
+        );
+      }
+    };
 
-  return (
-    <main className="single-beer" key={beer.id}>
-      <section className="top-description">
-        <div className="single-beer-description">
-          <h2>{beer.name}</h2>
-          <p className="beer-tagline">{beer.tagline}</p>
-          {toggleFavourite()}
-          <p>{beer.description}</p>
-        </div>
-        <img src={beer.image_url} />
-      </section>
-      <BeerStats beer={beer} />
-      <BeerBrewing beer={beer} />
-    </main>
-  );
-});
+    return (
+      <main className="single-beer" key={beer.id}>
+        <section className="top-description">
+          <div className="single-beer-description">
+            <h2>{beer.name}</h2>
+            <p className="beer-tagline">{beer.tagline}</p>
+            {toggleFavourite()}
+            <p>{beer.description}</p>
+          </div>
+          <img src={beer.image_url} />
+        </section>
+        <BeerStats beer={beer} />
+        <BeerBrewing beer={beer} />
+      </main>
+    );
+  }
+);
 
 const mapStateToProps = (state) => {
   return {
-    state: state.beersReducer,
+    favourites: getFavouriteBeersSelector(state),
+    beers: getBeersSelector(state),
+    id: state.beersReducer.get("id"),
   };
 };
 
@@ -74,7 +80,9 @@ const BeerConnect = connect(mapStateToProps, mapDispatchToProps)(Beer);
 
 export default BeerConnect;
 Beer.propTypes = {
-  state: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
+  beers: PropTypes.array.isRequired,
+  favourites: PropTypes.array.isRequired,
   addFavourite: PropTypes.func.isRequired,
   removeFavourite: PropTypes.func.isRequired,
 };

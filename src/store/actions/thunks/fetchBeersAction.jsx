@@ -34,7 +34,6 @@ const filterBeers = (alcohol, unit, color) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(alcohol, unit, color);
         dispatch(fetchBeersSuccess(data));
       })
       .catch((error) => dispatch(fetchBeersFailure(error)));

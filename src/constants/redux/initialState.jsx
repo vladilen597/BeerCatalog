@@ -1,4 +1,6 @@
-const initialState = {
+import { Map } from "immutable";
+
+let initialState = Map({
   isLoading: false,
   beers: [],
   error: "",
@@ -10,6 +12,6 @@ const initialState = {
   },
   favourites: [],
   id: 0,
-};
+});
 
 export default initialState;

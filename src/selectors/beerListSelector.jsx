@@ -1,8 +1,7 @@
 import { createSelector } from "reselect";
 
-const getFavouriteBeers = (state) => state.beersReducer.favourites;
-const getIsLoading = (state) => state.beersReducer.isLoading;
-const getBeers = (state) => state.beersReducer.beers;
+const getIsLoading = (state) => state.beersReducer.get("isLoading");
+const getBeers = (state) => state.beersReducer.get("beers");
 
 export const getBeersSelector = createSelector([getBeers], (getBeers) => {
   return getBeers;

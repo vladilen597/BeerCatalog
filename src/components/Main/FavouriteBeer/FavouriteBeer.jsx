@@ -6,10 +6,8 @@ import {
   getId,
   removeFavourite,
 } from "../../../store/actions/actionCreators/toggleFavourite.jsx";
-import {
-  getFavouriteBeersSelector,
-  getBeersSelector,
-} from "../../../selectors/favouritesSelector.jsx";
+import { getFavouriteBeersSelector } from "../../../selectors/favouritesSelector.jsx";
+import { getBeersSelector } from "../../../selectors/beerListSelector.jsx";
 import "./FavouriteBeer.scss";
 
 import favouriteBeerResources from "../../../constants/resources/favouriteBeerResources.jsx";

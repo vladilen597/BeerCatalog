@@ -6,55 +6,47 @@ import initialState from "../../constants/redux/initialState.jsx";
 const beersReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_BEERS.REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-      };
+      return state.update("isLoading", (loading) => (loading = true));
+
     case FETCH_BEERS.SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        beers: action.payload,
-        favourites:
-          localStorage.length > 0 ? JSON.parse(localStorage.getItem(0)) : [],
-      };
-    case FETCH_BEERS.FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload,
-      };
-    case BEER_OPERATION.FIND_BEER:
-      return {
-        ...state,
-        isSearched: true,
-      };
-    case TOGGLE_FAVOURITE.ADD_FAVOURITE:
-      localStorage.setItem(0, JSON.stringify([...state.favourites, state.id]));
-      return {
-        ...state,
-        favourites: [...state.favourites, state.id],
-      };
-    case TOGGLE_FAVOURITE.REMOVE_FAVOURITE:
-      localStorage.setItem(
-        0,
-        JSON.stringify(
-          state.favourites.filter((item) => {
-            return item != state.id;
-          })
-        )
+      state = state.update("isLoading", (loading) => (loading = false));
+      state = state.update("favourites", (liked) =>
+        localStorage.length > 0
+          ? (liked = JSON.parse(localStorage.getItem(0)))
+          : (liked = [])
       );
-      return {
-        ...state,
-        favourites: state.favourites.filter((item) => {
-          return item != state.id;
-        }),
-      };
+      return state.update("beers", (beers) => (beers = action.payload));
+
+    case FETCH_BEERS.FAILURE:
+      console.log(action.payload);
+      return state.update("error", (errorMessage) => {
+        errorMessage = action.payload;
+      });
+
+    case BEER_OPERATION.FIND_BEER:
+      return state.update("isSearched", (isSearched) => (isSearched = true));
+
+    case TOGGLE_FAVOURITE.ADD_FAVOURITE:
+      const tempArray = state.get("favourites");
+      tempArray.push(state.get("id"));
+      console.log(tempArray);
+      localStorage.setItem(0, JSON.stringify(tempArray));
+      return state.set("favourites", [...state.get("favourites")]);
+
+    case TOGGLE_FAVOURITE.REMOVE_FAVOURITE:
+      const newFavouritesArray = state.get("favourites").filter((item) => {
+        return item != state.get("id");
+      });
+
+      localStorage.setItem(0, JSON.stringify(newFavouritesArray));
+      return state.update(
+        "favourites",
+        (liked) => (liked = newFavouritesArray)
+      );
+
     case TOGGLE_FAVOURITE.GET_ID:
-      return {
-        ...state,
-        id: action.payload,
-      };
+      return state.update("id", (id) => (id = action.payload));
+
     default:
       return state;
   }

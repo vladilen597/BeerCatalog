@@ -1,8 +1,6 @@
 import { createSelector } from "reselect";
 
-const getFavouriteBeers = (state) => state.beersReducer.favourites;
-
-const getBeers = (state) => state.beersReducer.beers;
+const getFavouriteBeers = (state) => state.beersReducer.get("favourites");
 
 export const getFavouriteBeersSelector = createSelector(
   [getFavouriteBeers],
@@ -10,7 +8,3 @@ export const getFavouriteBeersSelector = createSelector(
     return getFavouriteBeers;
   }
 );
-
-export const getBeersSelector = createSelector([getBeers], (getBeers) => {
-  return getBeers;
-});
