@@ -15,7 +15,10 @@ module.exports = smp.wrap({
     port: 3000,
     historyApiFallback: true,
   },
-  plugins: [new HTMLWebpackPlugin({ template: "./src/index.html" })],
+  plugins: [
+    new HTMLWebpackPlugin({ template: "./src/index.html" }),
+    "@babel/plugin-transform-react-jsx",
+  ],
   module: {
     rules: [
       {
@@ -33,7 +36,7 @@ module.exports = smp.wrap({
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"],
+        use: ["babel-loader"],
       },
       {
         test: /\.jsx$/,

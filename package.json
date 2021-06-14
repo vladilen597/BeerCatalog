@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --env=jsdom"
   },
   "eslintConfig": {
     "extends": [
@@ -13,28 +13,38 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(scss|less)$": "identity-obj-proxy"
+    }
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
+    "@testing-library/react": "^11.2.7",
     "@webpack-cli/serve": "^1.4.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "jest": "^27.0.4",
+    "jest-dom": "^4.0.0",
     "style-loader": "^2.0.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.14.5",
     "@babel/polyfill": "^7.12.1",
     "@material-ui/core": "^4.11.4",
     "eslint": "^7.28.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-react": "^7.24.0",
     "eslint-webpack-plugin": "^2.5.4",
+    "identity-obj-proxy": "^3.0.0",
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -42,6 +52,7 @@
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-test-renderer": "^17.0.2",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
