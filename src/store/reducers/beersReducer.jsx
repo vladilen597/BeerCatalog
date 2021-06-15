@@ -18,7 +18,6 @@ const beersReducer = (state = initialState, action) => {
       return state.update("beers", (beers) => (beers = action.payload));
 
     case FETCH_BEERS.FAILURE:
-      console.log(action.payload);
       return state.update("error", (errorMessage) => {
         errorMessage = action.payload;
       });
@@ -29,7 +28,6 @@ const beersReducer = (state = initialState, action) => {
     case TOGGLE_FAVOURITE.ADD_FAVOURITE:
       const tempArray = state.get("favourites");
       tempArray.push(state.get("id"));
-      console.log(tempArray);
       localStorage.setItem(0, JSON.stringify(tempArray));
       return state.set("favourites", [...state.get("favourites")]);
 

@@ -10,7 +10,9 @@ const fetchBeers = (page = 1) => {
     fetch(`https://api.punkapi.com/v2/beers?page=${page}&per_page=18`)
       .then((res) => res.json())
       .then((data) => dispatch(fetchBeersSuccess(data)))
-      .catch((error) => dispatch(fetchBeersFailure(error)));
+      .catch((error) => {
+        dispatch(fetchBeersFailure(toString(error)));
+      });
   };
 };
 
@@ -22,7 +24,9 @@ const findBeerFetch = (name) => {
       .then((data) => {
         dispatch(fetchBeersSuccess(data));
       })
-      .catch((error) => dispatch(fetchBeersFailure(error)));
+      .catch((error) => {
+        dispatch(fetchBeersFailure(error));
+      });
   };
 };
 

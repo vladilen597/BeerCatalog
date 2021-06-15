@@ -16,8 +16,6 @@ import routes from "../../../constants/resources/routes.jsx";
 
 const FavouriteBeer = React.memo(
   ({ getId, removeFavourite, beers, favourites }) => {
-    console.log(beers);
-
     const getLiked = useMemo(() => {
       let tempArray = [];
       for (let i = 0; i < beers.length; i++) {

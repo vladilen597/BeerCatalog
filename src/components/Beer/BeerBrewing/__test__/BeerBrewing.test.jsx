@@ -9,7 +9,7 @@ it("BeerBrewing should render", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <Provider store={store}>
-      <BeerBrewing beer={testBeer} />
+      <BeerBrewing beer={testBeer[0]} />
     </Provider>,
     div
   );

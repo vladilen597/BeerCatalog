@@ -33,8 +33,6 @@ const BeerList = React.memo(
       fetchBeers();
     }, []);
 
-    console.log(favourites);
-
     const handleToggleFavouriteClick = (beer) => {
       getId(beer.id);
       if (favourites.filter((like) => like == beer.id).length === 0) {

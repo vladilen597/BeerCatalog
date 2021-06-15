@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --open",
-    "test": "jest --env=jsdom"
+    "test": "jest --verbose --env=jsdom"
   },
   "eslintConfig": {
     "extends": [
@@ -15,7 +15,8 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(scss|less)$": "identity-obj-proxy"
+      "\\.(css|scss|less)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png)$": "<rootDir>/empty-import.js"
     }
   },
   "author": "",

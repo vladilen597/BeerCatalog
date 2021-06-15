@@ -1,16 +1,14 @@
 import TOGGLE_FAVOURITE from "../../../constants/dictionary/TOGGLE_FAVOURITE.jsx";
 
-const addFavourite = (id) => {
+const addFavourite = () => {
   return {
     type: TOGGLE_FAVOURITE.ADD_FAVOURITE,
-    payload: id,
   };
 };
 
-const removeFavourite = (id) => {
+const removeFavourite = () => {
   return {
     type: TOGGLE_FAVOURITE.REMOVE_FAVOURITE,
-    payload: id,
   };
 };
 
